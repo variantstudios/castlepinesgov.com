@@ -1,0 +1,13 @@
+////////////////////////
+// Layouts Partials
+//
+// Your SMACSS Layouts go here
+// Build sub folders and partials in this folder, with everything being imported, in cascading order, into this file.
+////////////////////////
+
+@import 'header';
+@import 'content';
+@import 'container';
+@import 'footer';
+@import 'calls';
+@import "cols";

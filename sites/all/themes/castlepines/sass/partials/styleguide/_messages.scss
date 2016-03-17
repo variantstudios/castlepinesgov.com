@@ -1,0 +1,21 @@
+.messages {
+  background: #ccc;
+  @include border-radius(4px);
+  padding: 1em;
+  &.status {
+    background: lighten($valid, 40%);
+    border-left: 8px solid $valid;
+  }
+  &.error {
+    background: lighten($error, 30%);
+    border-left: 8px solid $error;
+  }
+  &.warning {
+    background: lighten($warning, 30%);
+    border-left: 8px solid $warning;
+  }
+  h2 {
+    margin: 0 0 0.2em;
+    font-size: 125%;
+  }
+}

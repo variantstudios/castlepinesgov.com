@@ -1,0 +1,740 @@
+/**
+ * Basic Print File
+ *
+ * This print file imports base and styleguide settings, while ignoring the rest
+ * of the layout, structure, etc. The point of this is to make your print files
+ * pretty.
+ *
+ * Here is a good article about print stylesheets:
+ * http://coding.smashingmagazine.com/2011/11/24/how-to-set-up-a-print-style-sheet/
+ *
+ * If you are lazy and didn't read that, basically hide stuff that people don't
+ * need on a piece of paper(ie - Ads, menus, etc).
+ */
+/**
+ * Libraries are used to call additional gems
+ */
+/* validation Colors */
+/* These font sizes are all in rem, if you don't like it, the easiest way to
+ change it is to alter the mixin and drop the rem line.*/
+/* Colors */
+/**
+ * General Text Formatting
+ */
+body {
+  font-size: 95%;
+  font-family: "proxima-nova-soft", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.8;
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: #515351;
+}
+@media (min-width: 48em) {
+  body {
+    font-size: 100%;
+    /* increases fon-size on larger displays */
+  }
+}
+
+/**
+ * Blockquote
+ */
+blockquote {
+  margin: 0em 1em;
+  padding: .5em 0em;
+  font-style: italic;
+  font-weight: 700;
+}
+@media (min-width: 48em) {
+  blockquote {
+    padding: .5em 2em;
+  }
+}
+.no-mq blockquote {
+  padding: .5em 2em;
+}
+
+p {
+  font-family: "clavo", serif;
+  line-height: 1.95;
+}
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+  margin: 1rem 0;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 280%;
+  font-family: "proxima-nova-soft", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #63a869;
+  margin: 0 0;
+}
+
+h2 {
+  font-size: 200%;
+}
+
+h3 {
+  font-size: 170%;
+}
+
+h4 {
+  font-size: 130%;
+}
+
+h5 {
+  font-size: 120%;
+}
+
+h6 {
+  font-size: 105%;
+}
+
+.sub-title {
+  font-family: "proxima-nova-soft", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #d75d38;
+  font-size: 150%;
+  margin-top: 0;
+}
+
+/**
+* Form elements: Inputs, buttons, etc.
+*/
+fieldset {
+  border: 1px solid #cccccc;
+  padding: 0.5em 1.5em;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: "proxima-nova-soft", Helvetica, Arial, sans-serif;
+}
+
+label {
+  display: block;
+  vertical-align: top;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="file"],
+textarea,
+select {
+  outline: none;
+  -webkit-appearance: none;
+  border: 1px solid #e5e5e5;
+  padding: .5em 1em;
+  font-size: 95%;
+  margin: .4em 0;
+  border-radius: 4px;
+  vertical-align: top;
+  width: 100%;
+}
+@media (min-width: 48em) {
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="file"],
+  textarea,
+  select {
+    width: auto;
+  }
+}
+.no-mq input[type="text"], .no-mq
+input[type="password"], .no-mq
+input[type="email"], .no-mq
+input[type="file"], .no-mq
+textarea, .no-mq
+select {
+  width: auto;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus,
+textarea:focus,
+select:focus {
+  -webkit-appearance: none;
+  border: 1px solid #e5e5e5;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+select {
+  background-image: url("../images/system/menu-expanded.png");
+  background-repeat: no-repeat;
+  background-position: 92% 60%;
+  background-color: #FFF;
+  padding: .4em 2em .4em 1em;
+  text-indent: 0.01px;
+  text-overflow: "";
+  -moz-appearance: none;
+}
+
+textarea {
+  line-height: 1.7;
+}
+
+.form-textarea-wrapper {
+  display: inline-block;
+  width: auto;
+}
+
+.filter-wrapper {
+  margin: -1em 0 0;
+  padding: 0.5em 1em;
+}
+.filter-wrapper .form-item {
+  padding: 0;
+}
+.filter-wrapper .filter-guidelines {
+  padding: 0;
+}
+.filter-wrapper li {
+  margin-bottom: 0;
+}
+
+input[type="submit"] {
+  background: #d75d38;
+  border: 0;
+  padding: 0.65em 1.25em;
+  font-weight: 700;
+  font-size: 100%;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 1em;
+  border-radius: 6px;
+  -webkit-appearance: none;
+}
+input[type="submit"]:hover {
+  background: #cc4f29;
+}
+
+/* File Upload Submit Button */
+.form-managed-file .form-submit {
+  margin: 0 1em;
+}
+
+div.breadcrumb a {
+  padding: 0 .4em;
+}
+
+/**
+ * Comment Post Forbidden
+ */
+/**
+ * Comment
+ */
+/**
+ * B
+ */
+/**
+ * Delete
+ */
+/**
+ * Emphasis
+ */
+em, i {
+  font-style: italic;
+}
+
+/**
+ * Figcaption
+ */
+/**
+ * Figure
+ */
+/**
+ * hr
+ */
+hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #666;
+}
+
+/**
+ * Italic
+ */
+/**
+ * Quote
+ */
+/**
+ * Strikethrough
+ */
+/**
+ * Small
+ */
+/**
+ * Strong
+ */
+strong, b {
+  font-weight: bold;
+}
+
+/**
+ * Subscript
+ */
+/**
+ * Superscript
+ */
+/**
+ * Underline
+ */
+/**
+ * Link
+ */
+a:link {
+  color: #63a869;
+}
+a:visited {
+  color: #63a869;
+}
+a:hover, a:focus {
+  color: #a4cda8;
+}
+a:active, a.active {
+  color: #4d8b53;
+}
+
+/**
+ * Links
+ */
+li a.active {
+  color: #4d8b53;
+  font-weight: 700;
+}
+
+/**
+ * Mark, new
+ */
+/**
+ * Mark, updated
+ */
+/**
+ * More help link
+ */
+.more-help-link a {
+  color: #63a869;
+  padding: .5em .5em .5em 1.5em;
+  text-decoration: none;
+  border-bottom: 1px solid;
+}
+
+/**
+* More link
+*/
+a#edit-cancel {
+  display: inline-block;
+  color: #d04020;
+  padding: 0.2em 1.5em;
+}
+
+a.btn {
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .15em 1em;
+  font-size: 140%;
+  font-family: "proxima-nova-soft", Helvetica, Arial, sans-serif;
+  background: #7f7f7f;
+  color: white;
+}
+a.btn:hover {
+  background: #666666;
+}
+
+/**
+ * Unordered List
+ */
+ul {
+  /**
+   * Unordered inline list with links
+   */
+}
+ul li {
+  font-family: "clavo", serif;
+}
+
+/**
+ * Ordered List
+ */
+ol li {
+  font-family: "clavo", serif;
+}
+
+/**
+ * Both
+ */
+ul, ol {
+  margin: 0;
+  padding: 0 0 0 2em;
+}
+
+/**
+ * List Item
+ */
+li {
+  margin-bottom: 1em;
+}
+
+/**
+ * Nested Items
+ */
+ul.pager {
+  padding: 0;
+}
+ul.pager li {
+  display: inline-block;
+  padding: 0 .2em;
+}
+
+/**
+ * There isn't much to place in here, but if there is
+ * special media treatment on the site place it here
+ */
+img.image-full_width_image.insert-image {
+  width: 100% !important;
+  height: auto !important;
+  padding: 1rem 0 2rem;
+}
+
+img.image-half_width_image.insert-image {
+  width: 100% !important;
+  height: auto !important;
+  padding: 1rem;
+}
+@media (min-width: 48em) {
+  img.image-half_width_image.insert-image {
+    width: 50% !important;
+  }
+}
+.no-mq img.image-half_width_image.insert-image {
+  width: 50% !important;
+}
+
+/**
+ * There isn't much to place in here, but if there is
+ * special media treatment on the site place it here
+ */
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/**
+ * Search block form
+ */
+/**
+ * Search, no results
+ */
+/**
+ * Search, results
+ */
+/* Messages */
+div.messages {
+  font-weight: 700;
+  padding: 1em 4em;
+  border-left: 10px solid;
+  font-size: 92%;
+  background-position: 16px 16px;
+}
+div.messages.status {
+  background-color: #f2faf0;
+  border-color: #b0e0a4;
+  background-image: url("../images/system/valid.png");
+}
+div.messages.warning {
+  background-color: #fdf8ee;
+  border-color: #edc065;
+  background-image: url("../images/system/warning.png");
+}
+div.messages.error {
+  background-color: #fdf4f2;
+  border-color: #e9846d;
+  background-image: url("../images/system/error.png");
+}
+
+html.js input.form-autocomplete {
+  background-image: url("../images/system/throbber-still.gif");
+  background-position: 98% center;
+}
+
+html.js input.throbbing {
+  background-image: url("../images/system/throbber-load.gif");
+  background-position: 98% center;
+}
+
+/* Token Tree */
+.token-tree {
+  margin: 0;
+  font-size: 100%;
+}
+.token-tree td {
+  padding: 0.3em 1em;
+}
+.token-tree td span {
+  margin-left: -9px !important;
+  padding-left: 20px !important;
+}
+
+/* Progress Bar */
+#progress {
+  border: 0;
+}
+#progress .bar {
+  border-radius: 0;
+  background: #e5e5e5;
+  border: 0;
+}
+#progress .bar .filled {
+  background: #b3b3b3;
+  /* this will be replaced with site specific color */
+}
+
+/**
+ * Confirm Form
+ */
+#styleguide-header ul {
+  -moz-column-count: 3;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 20px;
+  margin-bottom: 2em;
+}
+
+/**
+ * Table
+ */
+tr {
+  padding: 0;
+}
+
+td {
+  padding: .2em 1em;
+}
+
+div.vertical-tabs {
+  background: #fff;
+}
+
+fieldset {
+  background: #fff;
+}
+
+.page-node-edit #wrapper--content .container-main, .page-node-add #wrapper--content .container-main, .page-node-webform-components #wrapper--content .container-main, .page-node-webform #wrapper--content .container-main {
+  width: 100%;
+  border: 0;
+}
+.page-node-edit #wrapper--content .container-sidebar, .page-node-add #wrapper--content .container-sidebar, .page-node-webform-components #wrapper--content .container-sidebar, .page-node-webform #wrapper--content .container-sidebar {
+  display: none;
+}
+.page-node-edit .container-main form label, .page-node-add .container-main form label, .page-node-webform-components .container-main form label, .page-node-webform .container-main form label {
+  width: auto;
+}
+.page-node-edit .container-main form .form-textarea-wrapper, .page-node-add .container-main form .form-textarea-wrapper, .page-node-webform-components .container-main form .form-textarea-wrapper, .page-node-webform .container-main form .form-textarea-wrapper {
+  display: block;
+  width: 100%;
+}
+.page-node-edit .container-main form input[type="text"], .page-node-edit .container-main form input[type="password"], .page-node-edit .container-main form input[type="email"], .page-node-edit .container-main form input[type="file"], .page-node-edit .container-main form textarea, .page-node-edit .container-main form select, .page-node-add .container-main form input[type="text"], .page-node-add .container-main form input[type="password"], .page-node-add .container-main form input[type="email"], .page-node-add .container-main form input[type="file"], .page-node-add .container-main form textarea, .page-node-add .container-main form select, .page-node-webform-components .container-main form input[type="text"], .page-node-webform-components .container-main form input[type="password"], .page-node-webform-components .container-main form input[type="email"], .page-node-webform-components .container-main form input[type="file"], .page-node-webform-components .container-main form textarea, .page-node-webform-components .container-main form select, .page-node-webform .container-main form input[type="text"], .page-node-webform .container-main form input[type="password"], .page-node-webform .container-main form input[type="email"], .page-node-webform .container-main form input[type="file"], .page-node-webform .container-main form textarea, .page-node-webform .container-main form select {
+  border: 1px solid #C2C2C2;
+  padding: .5em 1em;
+  font-size: 100%;
+  width: 100%;
+}
+.page-node-edit .container-main form .cke_wysiwyg_frame, .page-node-edit .container-main form .cke_wysiwyg_div, .page-node-add .container-main form .cke_wysiwyg_frame, .page-node-add .container-main form .cke_wysiwyg_div, .page-node-webform-components .container-main form .cke_wysiwyg_frame, .page-node-webform-components .container-main form .cke_wysiwyg_div, .page-node-webform .container-main form .cke_wysiwyg_frame, .page-node-webform .container-main form .cke_wysiwyg_div {
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+.page-node-edit .container-main form .wysiwyg-toggle-wrapper, .page-node-add .container-main form .wysiwyg-toggle-wrapper, .page-node-webform-components .container-main form .wysiwyg-toggle-wrapper, .page-node-webform .container-main form .wysiwyg-toggle-wrapper {
+  padding: 1rem 1rem 2rem;
+  background: #efefef;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+}
+.page-node-edit .container-main form #edit-body-und-0-format, .page-node-add .container-main form #edit-body-und-0-format, .page-node-webform-components .container-main form #edit-body-und-0-format, .page-node-webform .container-main form #edit-body-und-0-format {
+  margin: -1em 0 0;
+  padding: 0em 1em 2rem;
+  background: #efefef;
+}
+.page-node-edit .container-main form .form-managed-file .form-submit, .page-node-add .container-main form .form-managed-file .form-submit, .page-node-webform-components .container-main form .form-managed-file .form-submit, .page-node-webform .container-main form .form-managed-file .form-submit {
+  margin: 1em 1em 1em 0;
+  background: #63a869;
+}
+.page-node-edit .container-main form fieldset, .page-node-add .container-main form fieldset, .page-node-webform-components .container-main form fieldset, .page-node-webform .container-main form fieldset {
+  margin: 2rem 0;
+  border-radius: 4px;
+  font-family: "proxima-nova-soft", Helvetica, Arial, sans-serif;
+  height: auto;
+  border: 1px solid #CCC !important;
+}
+.page-node-edit .container-main form fieldset:after, .page-node-add .container-main form fieldset:after, .page-node-webform-components .container-main form fieldset:after, .page-node-webform .container-main form fieldset:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.page-node-edit .container-main form fieldset.collapsed legend, .page-node-add .container-main form fieldset.collapsed legend, .page-node-webform-components .container-main form fieldset.collapsed legend, .page-node-webform .container-main form fieldset.collapsed legend {
+  margin: 0;
+}
+.page-node-edit .container-main form fieldset.collapsible .fieldset-wrapper, .page-node-add .container-main form fieldset.collapsible .fieldset-wrapper, .page-node-webform-components .container-main form fieldset.collapsible .fieldset-wrapper, .page-node-webform .container-main form fieldset.collapsible .fieldset-wrapper {
+  overflow: visible !important;
+}
+.page-node-edit .container-main form fieldset legend, .page-node-add .container-main form fieldset legend, .page-node-webform-components .container-main form fieldset legend, .page-node-webform .container-main form fieldset legend {
+  display: block;
+  float: left;
+  width: 100%;
+  margin: 1rem 0;
+}
+.page-node-edit .container-main form fieldset legend span, .page-node-add .container-main form fieldset legend span, .page-node-webform-components .container-main form fieldset legend span, .page-node-webform .container-main form fieldset legend span {
+  font-weight: 700;
+  font-size: 120%;
+}
+.page-node-edit .container-main form table, .page-node-add .container-main form table, .page-node-webform-components .container-main form table, .page-node-webform .container-main form table {
+  width: 100%;
+}
+.page-node-edit .container-main form table td, .page-node-add .container-main form table td, .page-node-webform-components .container-main form table td, .page-node-webform .container-main form table td {
+  padding: .5em 1em;
+}
+.page-node-edit .container-main form table tr th, .page-node-add .container-main form table tr th, .page-node-webform-components .container-main form table tr th, .page-node-webform .container-main form table tr th {
+  padding: 1rem;
+  border-bottom-width: 1px;
+}
+.page-node-edit .form-actions, .page-node-add .form-actions, .page-node-webform-components .form-actions, .page-node-webform .form-actions {
+  text-align: right;
+}
+.page-node-edit .form-actions .form-submit, .page-node-add .form-actions .form-submit, .page-node-webform-components .form-actions .form-submit, .page-node-webform .form-actions .form-submit {
+  background: #E0B9AD;
+}
+.page-node-edit .form-actions #edit-submit, .page-node-add .form-actions #edit-submit, .page-node-webform-components .form-actions #edit-submit, .page-node-webform .form-actions #edit-submit {
+  background: #63a869;
+}
+.page-node-edit .form-actions #edit-delete, .page-node-add .form-actions #edit-delete, .page-node-webform-components .form-actions #edit-delete, .page-node-webform .form-actions #edit-delete {
+  background: #D62D2D;
+}
+.page-node-edit label.option, .page-node-add label.option, .page-node-webform-components label.option, .page-node-webform label.option {
+  display: inline-block;
+  vertical-align: middle;
+}
+.page-node-edit .form-type-radios .form-radios, .page-node-add .form-type-radios .form-radios, .page-node-webform-components .form-type-radios .form-radios, .page-node-webform .form-type-radios .form-radios {
+  padding-left: 2rem;
+}
+.page-node-edit .form-type-radios .form-radios input, .page-node-add .form-type-radios .form-radios input, .page-node-webform-components .form-type-radios .form-radios input, .page-node-webform .form-type-radios .form-radios input {
+  display: inline-block;
+  vertical-align: middle;
+}
+.page-node-edit .form-type-radios .form-item .form-item, .page-node-add .form-type-radios .form-item .form-item, .page-node-webform-components .form-type-radios .form-item .form-item, .page-node-webform .form-type-radios .form-item .form-item {
+  display: inline-block;
+}
+.page-node-edit .webform-container-inline div, .page-node-edit .webform-container-inline div.form-item, .page-node-add .webform-container-inline div, .page-node-add .webform-container-inline div.form-item, .page-node-webform-components .webform-container-inline div, .page-node-webform-components .webform-container-inline div.form-item, .page-node-webform .webform-container-inline div, .page-node-webform .webform-container-inline div.form-item {
+  display: inline-block;
+  vertical-align: middle;
+}
+.page-node-edit .container-inline-date .form-item .form-item, .page-node-add .container-inline-date .form-item .form-item, .page-node-webform-components .container-inline-date .form-item .form-item, .page-node-webform .container-inline-date .form-item .form-item {
+  margin-right: 2rem;
+}
+.page-node-edit .container-inline-date .form-item.form-item-field-event-date-und-0-value2, .page-node-add .container-inline-date .form-item.form-item-field-event-date-und-0-value2, .page-node-webform-components .container-inline-date .form-item.form-item-field-event-date-und-0-value2, .page-node-webform .container-inline-date .form-item.form-item-field-event-date-und-0-value2 {
+  margin-right: 2rem;
+}
+.page-node-edit .container-inline-date .form-item.form-item-field-event-date-und-0-value2 > label, .page-node-add .container-inline-date .form-item.form-item-field-event-date-und-0-value2 > label, .page-node-webform-components .container-inline-date .form-item.form-item-field-event-date-und-0-value2 > label, .page-node-webform .container-inline-date .form-item.form-item-field-event-date-und-0-value2 > label {
+  clear: both;
+  margin: 0rem 0.5rem 0.5rem;
+  display: block;
+  text-transform: uppercase;
+  width: 100%;
+}
+.page-node-edit #repeat-settings-fieldset .date-clear.weekly label, .page-node-edit #repeat-settings-fieldset .date-clear.range-of-repeat label, .page-node-add #repeat-settings-fieldset .date-clear.weekly label, .page-node-add #repeat-settings-fieldset .date-clear.range-of-repeat label, .page-node-webform-components #repeat-settings-fieldset .date-clear.weekly label, .page-node-webform-components #repeat-settings-fieldset .date-clear.range-of-repeat label, .page-node-webform #repeat-settings-fieldset .date-clear.weekly label, .page-node-webform #repeat-settings-fieldset .date-clear.range-of-repeat label {
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+.page-node-edit #repeat-settings-fieldset .date-clear.weekly input, .page-node-edit #repeat-settings-fieldset .date-clear.range-of-repeat input, .page-node-add #repeat-settings-fieldset .date-clear.weekly input, .page-node-add #repeat-settings-fieldset .date-clear.range-of-repeat input, .page-node-webform-components #repeat-settings-fieldset .date-clear.weekly input, .page-node-webform-components #repeat-settings-fieldset .date-clear.range-of-repeat input, .page-node-webform #repeat-settings-fieldset .date-clear.weekly input, .page-node-webform #repeat-settings-fieldset .date-clear.range-of-repeat input {
+  width: auto;
+  vertical-align: middle;
+  padding: .5em;
+}
+.page-node-edit .field-type-image, .page-node-edit .field-type-linkimagefield, .page-node-add .field-type-image, .page-node-add .field-type-linkimagefield, .page-node-webform-components .field-type-image, .page-node-webform-components .field-type-linkimagefield, .page-node-webform .field-type-image, .page-node-webform .field-type-linkimagefield {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin: 2rem 0;
+}
+.page-node-edit .field-type-image:after, .page-node-edit .field-type-linkimagefield:after, .page-node-add .field-type-image:after, .page-node-add .field-type-linkimagefield:after, .page-node-webform-components .field-type-image:after, .page-node-webform-components .field-type-linkimagefield:after, .page-node-webform .field-type-image:after, .page-node-webform .field-type-linkimagefield:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.views-table {
+  width: 100%;
+}
+
+a.tabledrag-handle .handle {
+  width: 26px;
+  height: 26px;
+}
+
+ul.tabs {
+  margin: 1rem 0 2rem;
+  border-radius: 4px;
+  background: #63a869;
+  border: 1px solid #ccc;
+  padding: .75rem 1rem;
+  display: inline-block;
+}
+ul.tabs li {
+  margin: 0;
+  padding: 0;
+}
+ul.tabs li a {
+  padding: .5rem 1.2rem;
+  font-family: "proxima-nova-soft", Helvetica, Arial, sans-serif;
+  display: inline-block;
+  font-weight: 700;
+  border-radius: 4px;
+  background: #fff;
+  border: 1px solid #63a869;
+}
+ul.tabs li a.active {
+  background: #84ba88;
+  color: #fff;
+  border: 0;
+}
+
+ul.tabs.secondary {
+  display: block;
+  background: none;
+  padding: 0;
+  border: 0;
+  margin-top: 0;
+  font-size: 85%;
+}
+ul.tabs.secondary li {
+  border: 0;
+}
+ul.tabs.secondary a {
+  margin-right: 0.5em;
+}

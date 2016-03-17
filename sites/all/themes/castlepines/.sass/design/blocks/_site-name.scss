@@ -1,0 +1,16 @@
+.site-name {
+  position: relative;
+	z-index: 99;
+	@include breakpoint($small-tablet-down) {
+		float: left;
+		margin: 4em 0 -1em;
+	}
+  h1 {
+    @include hide-text;
+    background: url("../images/logos/logo.png") no-repeat;
+    margin: 0;
+    height: 158px;
+    width: 267px;
+    z-index: 999;
+  }
+}

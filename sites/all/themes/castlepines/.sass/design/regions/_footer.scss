@@ -1,0 +1,64 @@
+footer {
+	@include clearfix;
+  background: url('../images/theme/footer-bg.jpg') repeat;
+  padding: 2em;
+}
+
+.location--footer, .newsletter--footer {
+	@include clearfix;
+	display: inline-block;
+	vertical-align: top;
+	@include breakpoint($tablet, $no-query: '.no-mq') {
+	  width: 49%;
+	  padding: 1rem;
+	}
+	h2 {
+		color: $green;
+		font-size: 160%;
+		margin: 0 0 .5rem;
+	}
+	img {
+    float: right;
+    border: 3px solid #FFF;
+    border-radius: 6px; 
+		@include breakpoint($tablet, $no-query: '.no-mq') {
+		  margin-left: 1rem;
+			width: 50%;
+		}
+	}
+	p {
+		margin: 0;
+	}
+	.content a {
+		display: inline-block;
+		margin: .5rem 0 0;
+	}
+}
+
+.bottom-footer {
+	font-size: 85%;
+	background: #D6D5C5;
+	padding: 0 3em;
+	font-weight: 700;
+	@include breakpoint($small-tablet-down) {
+		padding: 1em 2em;
+	}
+	p {
+		@include breakpoint($small-tablet-down) {
+			margin: 0;
+		}
+	}
+	.copy {
+		@include breakpoint($tablet, $no-query: '.no-mq') {
+	    display: inline-block;
+	    width: 50%;
+    }
+	}
+	.site-by {
+		@include breakpoint($tablet, $no-query: '.no-mq') {
+	    display: inline-block;
+	    width: 49%;
+	    text-align: right;
+    }
+	}
+}

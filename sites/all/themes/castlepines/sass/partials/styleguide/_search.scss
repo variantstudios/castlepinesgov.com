@@ -1,0 +1,118 @@
+//Search 
+.block-search {
+  position: relative;
+  @include breakpoint($phone){
+	  clear: both;
+	  margin-bottom: 1em;
+  }
+  .form-item-search-block-form {
+    padding: .75em 2.25em .75em .5em;
+    @include breakpoint($phone){
+	    padding: 0em 0em 0 .5em;
+			display: inline-block;
+			width: 83%;
+			margin: 0;
+		}
+  }
+  input[type="text"] {
+    border: 0;
+    border-bottom: 1px solid $gray-80;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    background: none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 100%;
+    color: $gray-60;
+    float: left;
+    box-shadow: none;
+    border-radius: 0;
+   
+    @include breakpoint($tablet, $no-query: '.no-mq') {
+        padding: 0 0 .75em;
+        font-size: 90%;
+      }
+      @include breakpoint($phone) {
+	      border: 1px solid #cccccc;
+				padding: .65em 1.5em;
+				border-radius: 3px;
+			}
+    &:active, &:focus {
+      border-bottom: 1px solid $green;
+    }
+
+  }
+  /*input[type="submit"] {
+    display: inline-block;
+    float: right;
+    margin-top: -2.4em;
+    border-left: 1px solid $gray-80;
+    margin-bottom: 0;
+    padding: .6em .95em;
+    color: $gray-60;
+    &:hover {
+      color: $green;
+    }
+    @include breakpoint($phone) {
+      color: $white;
+      border-left: 1px solid $white;
+    }
+  }*/
+  span {
+    display: inline-block;
+    float: right;
+    margin-top: -3.4em;
+    position: relative;
+    cursor: pointer;
+    @include breakpoint($phone) {
+	    display: inline-block;
+			float: right;
+			margin-top: 0;
+			position: relative;
+			cursor: pointer;
+			width: 9%;
+			margin-right: 1.2em;
+	  }
+    &:hover:after {
+	    color: #000;
+    }
+    &:after {
+      cursor: pointer;
+	    font-family: "FontAwesome";
+	    font-size: 1.25em;
+	    content: "\f002";
+	    position: absolute;
+	    top: 0px;
+	    left: 13px;
+	    pointer-events: none;
+	    color: $gray-60;
+	    @include breakpoint($phone) {
+		   top: 3px; 
+		  }
+    }
+    .form-actions {
+      margin: 0;
+      cursor: pointer;
+      input.form-submit {    
+        text-indent: -9999px;
+        width: 41px;
+        height: 41px;
+        margin: 0;
+        display: block;
+        cursor: pointer;
+        background: none;
+        padding: 0;
+        border-left: 1px solid #cccccc;
+				border-bottom: 1px solid #cccccc;
+				border-top: none;
+				border-right: none;
+				@include breakpoint($phone) {
+					border-radius: 3px;
+					border: 1px solid #cccccc;
+				}
+      }
+    }
+  }
+}

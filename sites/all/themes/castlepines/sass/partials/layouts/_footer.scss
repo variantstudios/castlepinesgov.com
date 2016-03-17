@@ -1,0 +1,27 @@
+.footer-left {
+	@include breakpoint($tablet, $no-query: '.no-mq') {
+		@include grid-span(6,1);
+	}
+}
+.footer-right {
+	@include breakpoint($tablet, $no-query: '.no-mq') {
+		@include grid-span(6,7);
+	}
+}
+
+.footer-one {
+	@include breakpoint($tablet, $no-query: '.no-mq') {
+		@include grid-span(4,1);
+		@include clearfix;
+	}
+}
+.footer-two {
+	@include breakpoint($tablet, $no-query: '.no-mq') {
+		@include grid-span(4,5);
+	}
+}
+.footer-three {
+	@include breakpoint($tablet, $no-query: '.no-mq') {
+		@include grid-span(4,9);
+	}
+}

@@ -1,0 +1,80 @@
+////////////////////////
+// Mixins Partials
+//
+// All of your mixins should go in this file.
+////////////////////////
+
+@mixin rem($size, $attribute:font-size){
+  #{$attribute}: ($size * 10) + px;
+  #{$attribute}: $size + rem;
+}
+//This is a friendly mixin, not used unless you use it.
+@mixin sticky_footer($height:125px){
+  html, body{
+  height:100%;
+  }
+  #main-region {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -($height);
+  }
+  #main-region:after {
+    content: "";
+    display: block;
+  }
+  footer, #main-region:after {
+    /* .push must be the same height as footer */
+    height: $height;
+  }
+}
+
+@mixin mp-reset {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin icon($icon, $size:1em) {
+  &:before {
+    @extend %icon;
+    content: $icon;
+    font-size: $size;
+  }
+}
+
+@mixin block-title{
+  margin: 0;
+  background: $gray-40;
+  color: $white;
+  line-height: 1;
+  padding: .5em .45em;
+  text-transform: uppercase;
+  font-family: $alt-font-family;
+  font-size: 150%;
+  font-weight: 300;
+}
+
+@mixin block-sub-title {
+    background: $gray-20;
+    padding: .5em .45em;
+    margin: 0;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: $alt-font-family;
+    font-weight: 300;
+    color: $white;
+    font-size: 140%;
+    display: block;
+    
+}
+
+@mixin block-link {
+    display: block;  
+    margin: .5em 0 0;
+    font-style: italic; 
+}
+
+@mixin transition($object, $duration, $function) {
+  -webkit-transition:$object $duration $function;
+  transition:$object $duration $function;
+}

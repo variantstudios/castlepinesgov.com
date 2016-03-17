@@ -1,0 +1,484 @@
+3.2.10 (Media Mark)
+955b04b48edcf503ad6f11502f7bd4ab93cef752
+o:Sass::Tree::RootNode
+:@template"*////////////////////////
+// Enhance From
+//
+// - $feature: Modernizr feature (base CSS class name)
+////////////////////////
+@import "compass/typography/text/replacement";
+
+@mixin enhance-with($feature) {
+  .#{$feature} & {
+    @content;
+  }
+}
+
+////////////////////////
+// Degrade From
+//
+// - $feature: Modernizr feature (base CSS class name)
+////////////////////////
+@mixin degrade-from($feature, $no-js: true) {
+  @if $feature == 'js' or not $no-js {
+    .no-#{$feature} & {
+      @content;
+    }
+  }
+  @else {
+    .no-#{$feature} &,
+    .no-js & {
+      @content;
+    }
+  }
+}
+
+////////////////////////
+// Progressive Enhancement Text Replace Mixin
+//
+// - $png-path: The path to the pngs for the image sprite, including the *.png (just like normal image sprites)
+// - $sprite: The name of the sprite you want to use (this is the file name without extension)
+// - $inline-svg: Switches between a Base64 encoded SVG or a normal url() for the SVG. Default to true
+// - $with-dimensions: Switches between including dimensions (height/width for all and background-size for SVG) or not. Defaults to true.
+// - $inline: Whether or not the containing selector is an inline element. Defaults to false.
+////////////////////////
+@import "compass/utilities/sprites";
+
+$replace-text-pe-method: 'svg' !default;
+$replace-text-pe-inline-svg: true !default;
+$replace-text-pe-with-dimensions: true !default;
+$replace-text-inline-element: false !default;
+
+@mixin replace-text-pe($img-path, $sprite, $method: $replace-text-pe-method, $inline-svg: $replace-text-pe-inline-svg, $with-dimensions: $replace-text-pe-with-dimensions, $inline-element: $replace-text-inline-element) {
+  // Hide text. Use squish-text() if the element is inline
+  @if $inline-element {
+    @extend %replace-text-pe-squish;
+  }
+  @else {
+    @extend %replace-text-pe-hide;
+  }
+
+  @if $method == 'svg' {
+    @include svg-background($img-path, $sprite, $inline-svg, $with-dimensions);
+  }
+  @else if $method == 'retina' {
+    @include retina-background($img-path, $sprite, $with-dimensions);
+  }
+
+}
+
+//////////////////////////////
+// SVG Background Image with Fallback
+//////////////////////////////
+@mixin svg-background($img-path, $sprite, $inline-svg: $replace-text-pe-inline-svg, $with-dimensions: $replace-text-pe-with-dimensions) {
+  $png-path: $img-path + '/*.png';
+  $sprite-map: sprite-map($png-path);
+
+  // Build SVG file name
+  $svg-file: $img-path + '/#{$sprite}.svg';
+
+  // Default Sprite File
+  $sprite-file: '' !default;
+
+  @if $with-dimensions {
+    // Get Sprite File for Height/Width
+    $sprite-file: sprite-file($sprite-map, $sprite);
+
+    // Put the height/width of the image in
+    width: image-width($sprite-file);
+    height: image-height($sprite-file);
+  }
+
+  @include enhance-with('svg') {
+    // Inline the SVG so that advanced browsers and future tech doesn't need the extra HTTP requests for the SVG
+    @if $inline-svg {
+      background-image: inline-image($svg-file);
+    }
+    @else {
+      background-image: image-url($svg-file);
+    }
+    // No repeating backgrounds, please
+    background-repeat: no-repeat;
+    // Set background size to ensure that our SVG is the right size.
+    @if $with-dimensions {
+      background-size: image-width($sprite-file) image-height($sprite-file);
+    }
+  }
+
+  // Degrade from SVG
+  @include degrade-from('svg') {
+    // Extend the Sprite Background
+    @extend %#{sprite-map-name($sprite-map)}-image-map;
+    // Call the Sprite'd image's position.
+    @include sprite($sprite-map, $sprite);
+  }
+}
+
+//////////////////////////////
+// Retina Background Image with Fallback
+//////////////////////////////
+@mixin retina-background($img-path, $sprite, $with-dimensions: $replace-text-pe-with-dimensions) {
+  $png-path: $img-path + '/*.png';
+  $sprite-map: sprite-map($png-path);
+
+  $png2x-path: $img-path + '_2x/*.png';
+  $retina-map: sprite-map($png2x-path);
+
+  // Default Sprite File
+  $sprite-file: '' !default;
+
+  @if $with-dimensions {
+    // Get Sprite File for Height/Width
+    $sprite-file: sprite-file($sprite-map, $sprite);
+
+    width: image-width($sprite-file);
+    height: image-height($sprite-file);
+  }
+
+  .ie6 &,
+  .ie7 &,
+  .ie8 & {
+    @extend %#{sprite-map-name($sprite-map)}-image-map-fallback;
+    @include sprite($sprite-map, $sprite);
+  }
+
+  //////////////////////////////
+  // Ugly Hack
+  //
+  // Due to a bug plus a design decision, I cannot extend the background image
+  //   like I would like to or you would do by hand. This sucks, but it's the
+  //   only way to get it to work for now.
+  //////////////////////////////
+  @media (max-resolution: 1.4dppx), (-webkit-max-device-pixel-ratio: 1.4), (max--moz-device-pixel-ratio: 1.4), (max-resolution: 134.4dpi) {
+    background: {
+      image: $sprite-map;
+      repeat: no-repeat;
+    }
+    @include sprite($sprite-map, $sprite);
+  }
+  @media (min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    background: {
+      image: $retina-map;
+      repeat: no-repeat;
+    }
+    @if $with-dimensions {
+      background-size: image-width($sprite-file) image-height($sprite-file);
+    }
+    @include sprite($retina-map, $sprite);
+  }
+
+    //////////////////////////////
+    // Actual Hotness
+    //
+    // Do to a bug plus a design decision, I cannot extend the background image
+    //   like I would like to or you would do by hand. This is how it'll work
+    //   when I can.
+    //////////////////////////////
+//  @media (-webkit-max-device-pixel-ratio: 1.4), (max--moz-device-pixel-ratio: 1.4), (-o-max-device-pixel-ratio: 7/5), (min-resolution: 1.4dppx), (min-resolution: 134.4dpi) {
+//      @extend %#{sprite-map-name($png-path)}-image-map;
+//      @include sprite($png-path, $sprite)
+//    }
+//    @media (-webkit-max-device-pixel-ratio: 1.5), (max--moz-device-pixel-ratio: 1.5), (-o-max-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx), (min-resolution: 144dpi) {
+//      @extend %#{sprite-map-name($png2x-path)}-image-map;
+//      @include sprite($retina-map, $sprite);
+//      @if $with-dimensions {
+//        background-size: image-width($sprite-file) image-height($sprite-file);
+//      }
+//    }
+}
+
+//////////////////////////////
+// Sprite Map Generator
+//
+// Need a custom mixin to create extendable classes classes for background image for sprites because dynamic mixin names don't work.
+//
+// - $png-path: The path to the pngs for the image sprite, including the *.png (just like normal image sprites)
+//////////////////////////////
+@mixin sprite-map-generator($img-path, $method: $replace-text-pe-method) {
+  $png-path: $img-path + '/*.png';
+  $png-path: sprite-map($png-path);
+
+  @if $method == 'retina' {
+    $png2x-path: $img-path + '_2x/*.png';
+    $png2x-path: sprite-map($png2x-path);
+
+    %#{sprite-map-name($png-path)}-image-map-fallback {
+      background: {
+        image: $png-path;
+        repeat: no-repeat;
+      }
+    }
+
+    @media (max-resolution: 1.4dppx), (-webkit-max-device-pixel-ratio: 1.4), (max--moz-device-pixel-ratio: 1.4), (max-resolution: 134.4dpi) {
+      %#{sprite-map-name($png-path)}-image-map {
+        background: {
+          image: $png-path;
+          repeat: no-repeat;
+        }
+      }
+    }
+    @media (min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+      %#{sprite-map-name($png2x-path)}-image-map {
+        background: {
+          image: $png2x-path;
+          repeat: no-repeat;
+        }
+      }
+    }
+  }
+  @else {
+    %#{sprite-map-name($png-path)}-image-map {
+      background: {
+        image: $png-path;
+        repeat: no-repeat;
+      }
+    }
+  }
+
+
+}
+
+//////////////////////////////
+// Extendable Class for Squish Text mixin
+//////////////////////////////
+%replace-text-pe-squish {
+  @include squish-text();
+}
+
+//////////////////////////////
+// Extendable Class for Hide Text mixin
+//////////////////////////////
+%replace-text-pe-hide {
+  @include hide-text();
+}
+:@options{ :@has_childrenT:@children[o:Sass::Tree::CommentNode
+;@:@value["~/*//////////////////////
+ * Enhance From
+ *
+ * - $feature: Modernizr feature (base CSS class name)
+ *////////////////////// */;	[ :
+@type:silent:
+@lineio:Sass::Tree::ImportNode;0;@:@imported_file0;	[ :@imported_filename"(compass/typography/text/replacement;io:Sass::Tree::MixinDefNode;@:@splat0:
+@name"enhance-with;T;	[o:Sass::Tree::RuleNode:
+@rule[".o:Sass::Script::Variable	:@underscored_name"feature;@;"feature;i" &;@;T;	[o:Sass::Tree::ContentNode;@;	[ ;i:
+@tabsi ;i:
+@args[[o;;"feature;@;"feature0;io;
+
+;@;["~/*//////////////////////
+ * Degrade From
+ *
+ * - $feature: Modernizr feature (base CSS class name)
+ *////////////////////// */;	[ ;;;io;;@;0;"degrade-from;T;	[u:Sass::Tree::IfNode˚[o:Sass::Script::Operation
+:@options{ :@operand2o:!Sass::Script::UnaryOperation	;@:@operator:not:@operando:Sass::Script::Variable	:@underscored_name"
+no_js;@:
+@name"
+no-js:
+@linei;i:@operand1o; 
+;@;o:Sass::Script::String	;@:@value"js:
+@type:string;i;o;	;"feature;@;"feature;i;	:eq;i;	:or;iu:Sass::Tree::IfNodeÒ[00[o:Sass::Tree::RuleNode:
+@rule["	.no-o:Sass::Script::Variable	:@underscored_name"feature:@options{ :
+@name"feature:
+@linei" &,
+    .no-js &;	@:@has_childrenT:@children[o:Sass::Tree::ContentNode;	@;[ ;i!:
+@tabsi ;i [o:Sass::Tree::RuleNode:
+@rule["	.no-o;	;"feature;@;"feature;i" &;@:@has_childrenT:@children[o:Sass::Tree::ContentNode;@;[ ;i:
+@tabsi ;i;[[o;;"feature;@;"feature0[o;;"
+no_js;@;"
+no-jso:Sass::Script::Bool;@;T;i;io;
+
+;@;["É/*//////////////////////
+ * Progressive Enhancement Text Replace Mixin
+ *
+ * - $png-path: The path to the pngs for the image sprite, including the *.png (just like normal image sprites)
+ * - $sprite: The name of the sprite you want to use (this is the file name without extension)
+ * - $inline-svg: Switches between a Base64 encoded SVG or a normal url() for the SVG. Default to true
+ * - $with-dimensions: Switches between including dimensions (height/width for all and background-size for SVG) or not. Defaults to true.
+ * - $inline: Whether or not the containing selector is an inline element. Defaults to false.
+ *////////////////////// */;	[ ;;;i&o;;0;@;0;	[ ;"compass/utilities/sprites;i/o:Sass::Tree::VariableNode:
+@expro:Sass::Script::String	;@;"svg;:string;i1;@;"replace-text-pe-method;	[ ;i1:@guarded"!defaulto;;o;;@;T;i2;@;"replace-text-pe-inline-svg;	[ ;i2;""!defaulto;;o;;@;T;i3;@;"$replace-text-pe-with-dimensions;	[ ;i3;""!defaulto;;o;;@;F;i4;@;" replace-text-inline-element;	[ ;i4;""!defaulto;;@;0;"replace-text-pe;T;	[o;
+
+;@;["@/* Hide text. Use squish-text() if the element is inline */;	[ ;;;i7u;^[o:Sass::Script::Variable	:@underscored_name"inline_element:@options{ :
+@name"inline-element:
+@linei8u:Sass::Tree::IfNode{[00[o:Sass::Tree::ExtendNode
+:@optionalF:@options{ :@children[ :
+@linei<:@selector["%"replace-text-pe-hide[o:Sass::Tree::ExtendNode
+:@optionalF;@:@children[ ;	i9:@selector["%"replace-text-pe-squishu;∑[o:Sass::Script::Operation
+:@options{ :@operand2o:Sass::Script::String	;@:@value"svg:
+@type:string:
+@linei?:@operand1o:Sass::Script::Variable	:@underscored_name"method;@:
+@name"method;i?:@operator:eq;i?u:Sass::Tree::IfNodeø[o:Sass::Script::Operation
+:@options{ :@operand2o:Sass::Script::String	;@:@value"retina:
+@type:string:
+@lineiB:@operand1o:Sass::Script::Variable	:@underscored_name"method;@:
+@name"method;iB:@operator:eq;iB0[o:Sass::Tree::MixinNode;@:@splat0;"retina-background:@children[ :
+@args[o;	;"img_path;@;"img-path;iCo;	;"sprite;@;"sprite;iCo;	;"with_dimensions;@;"with-dimensions;iC:@keywords{ ;iC[o:Sass::Tree::MixinNode;@:@splat0;"svg-background:@children[ :
+@args[	o;	;"img_path;@;"img-path;i@o;	;"sprite;@;"sprite;i@o;	;"inline_svg;@;"inline-svg;i@o;	;"with_dimensions;@;"with-dimensions;i@:@keywords{ ;i@;[[o;;"img_path;@;"img-path0[o;;"sprite;@;"sprite0[o;;"method;@;"methodo;	;"replace_text_pe_method;@;"replace-text-pe-method;i6[o;;"inline_svg;@;"inline-svgo;	;"replace_text_pe_inline_svg;@;"replace-text-pe-inline-svg;i6[o;;"with_dimensions;@;"with-dimensionso;	;"$replace_text_pe_with_dimensions;@;"$replace-text-pe-with-dimensions;i6[o;;"inline_element;@;"inline-elemento;	;" replace_text_inline_element;@;" replace-text-inline-element;i6;i6o;
+
+;@;["k/*////////////////////////////
+ * SVG Background Image with Fallback
+ *//////////////////////////// */;	[ ;;;iHo;;@;0;"svg-background;T;	[o;;o:Sass::Script::Operation
+;@:@operand2o; 	;@;"/*.png;;!;iL:@operand1o;	;"img_path;@;"img-path;iL:@operator:	plus;iL;@;"png-path;	[ ;iL;"0o;;o:Sass::Script::Funcall;@;0;"sprite-map;[o;	;"png_path;@;"png-path;iM:@keywords{ ;iM;@;"sprite-map;	[ ;iM;"0o;
+
+;@;["/* Build SVG file name */;	[ ;;;iOo;;o;#
+;@;$o:&Sass::Script::StringInterpolation
+:@aftero; 	;@;"	.svg;;!;iP;@:	@mido;	;"sprite;@;"sprite;iP:@beforeo; 	;@;"/;;!;iP;iP;%o;	;"img_path;@;"img-path;iP;&;';iP;@;"svg-file;	[ ;iP;"0o;
+
+;@;["/* Default Sprite File */;	[ ;;;iRo;;o; 	;@;" ;;!;iS;@;"sprite-file;	[ ;iS;""!defaultu;[o:Sass::Script::Variable	:@underscored_name"with_dimensions:@options{ :
+@name"with-dimensions:
+@lineiU0[
+o:Sass::Tree::CommentNode
+;@:@value["+/* Get Sprite File for Height/Width */:@children[ :
+@type:silent;	iVo:Sass::Tree::VariableNode:
+@expro:Sass::Script::Funcall;@:@splat0;"sprite-file:
+@args[o; 	;"sprite_map;@;"sprite-map;	iWo; 	;"sprite;@;"sprite;	iW:@keywords{ ;	iW;@;"sprite-file;[ ;	iW:@guarded0o;
+
+;@;["//* Put the height/width of the image in */;[ ;;;	iYo:Sass::Tree::PropNode:@prop_syntax:new;@;["
+width;o;;@;0;"image-width;[o; 	;"sprite_file;@;"sprite-file;	iZ;{ ;	iZ;[ :
+@tabsi ;	iZo;;;;@;["height;o;;@;0;"image-height;[o; 	;"sprite_file;@;"sprite-file;	i[;{ ;	i[;[ ;i ;	i[o:Sass::Tree::MixinNode;@;0;"enhance-with;T;	[o;
+
+;@;["t/* Inline the SVG so that advanced browsers and future tech doesn't need the extra HTTP requests for the SVG */;	[ ;;;i_u;s[o:Sass::Script::Variable	:@underscored_name"inline_svg:@options{ :
+@name"inline-svg:
+@linei`u:Sass::Tree::IfNode[00[o:Sass::Tree::PropNode:@prop_syntax:new:@options{ :
+@name["background-image:@valueo:Sass::Script::Funcall;@:@splat0;	"image-url:
+@args[o:Sass::Script::Variable	:@underscored_name"svg_file;@;	"svg-file:
+@lineid:@keywords{ ;id:@children[ :
+@tabsi ;id[o:Sass::Tree::PropNode:@prop_syntax:new;@;["background-image:@valueo:Sass::Script::Funcall;@:@splat0;"inline-image:
+@args[o; 	;"svg_file;@;"svg-file;	ia:@keywords{ ;	ia:@children[ :
+@tabsi ;	iao;
+
+;@;["+/* No repeating backgrounds, please */;	[ ;;;ifo:Sass::Tree::PropNode:@prop_syntax:new;@;["background-repeat;o; ;@;"no-repeat;:identifier;	[ ;i ;igo;
+
+;@;["H/* Set background size to ensure that our SVG is the right size. */;	[ ;;;ihu;◊[o:Sass::Script::Variable	:@underscored_name"with_dimensions:@options{ :
+@name"with-dimensions:
+@lineii0[o:Sass::Tree::PropNode:@prop_syntax:new;@;["background-size:@valueo:Sass::Script::List	;@:@separator:
+space;[o:Sass::Script::Funcall;@:@splat0;"image-width:
+@args[o; 	;"sprite_file;@;"sprite-file;	ij:@keywords{ ;	ijo;;@;0;"image-height;[o; 	;"sprite_file;@;"sprite-file;	ij;{ ;	ij;	ij:@children[ :
+@tabsi ;	ij;[o; 	;@;"svg;;!;i^;){ ;i^o;
+
+;@;["/* Degrade from SVG */;	[ ;;;ino;.;@;0;"degrade-from;T;	[	o;
+
+;@;["'/* Extend the Sprite Background */;	[ ;;;ipo:Sass::Tree::ExtendNode
+:@optionalF;@;	[ ;iq:@selector["%o;(;@;0;"sprite-map-name;[o;	;"sprite_map;@;"sprite-map;iq;){ ;iq"-image-mapo;
+
+;@;["./* Call the Sprite'd image's position. */;	[ ;;;iro;.;@;0;"sprite;	[ ;[o;	;"sprite_map;@;"sprite-map;iso;	;"sprite;@;"sprite;is;){ ;is;[o; 	;@;"svg;;!;io;){ ;io;[	[o;;"img_path;@;"img-path0[o;;"sprite;@;"sprite0[o;;"inline_svg;@;"inline-svgo;	;"replace_text_pe_inline_svg;@;"replace-text-pe-inline-svg;iK[o;;"with_dimensions;@;"with-dimensionso;	;"$replace_text_pe_with_dimensions;@;"$replace-text-pe-with-dimensions;iK;iKo;
+
+;@;["n/*////////////////////////////
+ * Retina Background Image with Fallback
+ *//////////////////////////// */;	[ ;;;iwo;;@;0;"retina-background;T;	[o;;o;#
+;@;$o; 	;@;"/*.png;;!;i{;%o;	;"img_path;@;"img-path;i{;&;';i{;@;"png-path;	[ ;i{;"0o;;o;(;@;0;"sprite-map;[o;	;"png_path;@;"png-path;i|;){ ;i|;@;"sprite-map;	[ ;i|;"0o;;o;#
+;@;$o; 	;@;"_2x/*.png;;!;i~;%o;	;"img_path;@;"img-path;i~;&;';i~;@;"png2x-path;	[ ;i~;"0o;;o;(;@;0;"sprite-map;[o;	;"png2x_path;@;"png2x-path;i;){ ;i;@;"retina-map;	[ ;i;"0o;
+
+;@;["/* Default Sprite File */;	[ ;;;i|o;;o; 	;@;" ;;!;i};@;"sprite-file;	[ ;i};""!defaultu;„[o:Sass::Script::Variable	:@underscored_name"with_dimensions:@options{ :
+@name"with-dimensions:
+@linei0[	o:Sass::Tree::CommentNode
+;@:@value["+/* Get Sprite File for Height/Width */:@children[ :
+@type:silent;	iÄo:Sass::Tree::VariableNode:
+@expro:Sass::Script::Funcall;@:@splat0;"sprite-file:
+@args[o; 	;"sprite_map;@;"sprite-map;	iÅo; 	;"sprite;@;"sprite;	iÅ:@keywords{ ;	iÅ;@;"sprite-file;[ ;	iÅ:@guarded0o:Sass::Tree::PropNode:@prop_syntax:new;@;["
+width;o;;@;0;"image-width;[o; 	;"sprite_file;@;"sprite-file;	iÉ;{ ;	iÉ;[ :
+@tabsi ;	iÉo;;;;@;["height;o;;@;0;"image-height;[o; 	;"sprite_file;@;"sprite-file;	iÑ;{ ;	iÑ;[ ;i ;	iÑo;;[".ie6 &,
+  .ie7 &,
+  .ie8 &;@:@parsed_ruleso:"Sass::Selector::CommaSequence:@filename" ;iâ:@members[o:Sass::Selector::Sequence;9[o:#Sass::Selector::SimpleSequence
+:@subject0;8@I:@sourceso:Set:
+@hash{ ;iâ;9[o:Sass::Selector::Class;["ie6;8@I;iâo;;
+;<0;8@I;=o;>;?{ ;iâ;9[o:Sass::Selector::Parent;8@I;iâo;:;9["
+o;;
+;<0;8@I;=o;>;?{ ;iâ;9[o;@;["ie7;8@I;iâo;;
+;<0;8@I;=o;>;?{ ;iâ;9[o;A;8@I;iâo;:;9["
+o;;
+;<0;8@I;=o;>;?{ ;iâ;9[o;@;["ie8;8@I;iâo;;
+;<0;8@I;=o;>;?{ ;iâ;9[o;A;8@I;iâ;T;	[o;3
+;4F;@;	[ ;iä;5["%o;(;@;0;"sprite-map-name;[o;	;"sprite_map;@;"sprite-map;iä;){ ;iä"-image-map-fallbacko;.;@;0;"sprite;	[ ;[o;	;"sprite_map;@;"sprite-map;ião;	;"sprite;@;"sprite;iã;){ ;iã;i ;iâo;
+
+;@;["/*////////////////////////////
+ * Ugly Hack
+ *
+ * Due to a bug plus a design decision, I cannot extend the background image
+ *   like I would like to or you would do by hand. This sucks, but it's the
+ *   only way to get it to work for now.
+ *//////////////////////////// */;	[ ;;;iéo:Sass::Tree::MediaNode;@;" ;T;	[o;/;0;1;@;["background;o; ;@;" ;;2;T;	[o;/;0;1;@;["
+image;o;	;"sprite_map;@;"sprite-map;ió;	[ ;i ;ióo;/;0;1;@;["repeat;o; ;@;"no-repeat;;2;	[ ;i ;iò;i ;iño;.;@;0;"sprite;	[ ;[o;	;"sprite_map;@;"sprite-map;iöo;	;"sprite;@;"sprite;iö;){ ;iö:@query["(o; 	;@;"max-resolution;;2;iï": o:Sass::Script::Number:@numerator_units["	dppx;@:@original"1.4dppx;f1.3999999999999999 ff:@denominator_units[ ;iï")", "(o; 	;@;"#-webkit-max-device-pixel-ratio;;2;iï": o;D;E[ ;@;F"1.4;f1.3999999999999999 ff;G[ ;iï")@¿"(o; 	;@;" max--moz-device-pixel-ratio;;2;iï": o;D;E[ ;@;F"1.4;f1.3999999999999999 ff;G@…;iï")@¿"(o; 	;@;"max-resolution;;2;iï": o;D;E["dpi;@;F"134.4dpi;f134.40000000000001 ÃÕ;G[ ;iï");i ;iïo;B;@;" ;T;	[o;/;0;1;@;["background;o; ;@;" ;;2;T;	[o;/;0;1;@;["
+image;o;	;"retina_map;@;"retina-map;iû;	[ ;i ;iûo;/;0;1;@;["repeat;o; ;@;"no-repeat;;2;	[ ;i ;iü;i ;iùu;ﬁ[o:Sass::Script::Variable	:@underscored_name"with_dimensions:@options{ :
+@name"with-dimensions:
+@linei°0[o:Sass::Tree::PropNode:@prop_syntax:new;@;["background-size:@valueo:Sass::Script::List	;@:@separator:
+space;[o:Sass::Script::Funcall;@:@splat0;"image-width:
+@args[o; 	;"sprite_file;@;"sprite-file;	i¢:@keywords{ ;	i¢o;;@;0;"image-height;[o; 	;"sprite_file;@;"sprite-file;	i¢;{ ;	i¢;	i¢:@children[ :
+@tabsi ;	i¢o;.;@;0;"sprite;	[ ;[o;	;"retina_map;@;"retina-map;i§o;	;"sprite;@;"sprite;i§;){ ;i§;C["(o; 	;@;"min-resolution;;2;iú": o;D;E["	dppx;@;F"1.5dppx;f1.5;G[ ;iú")", "(o; 	;@;"#-webkit-min-device-pixel-ratio;;2;iú": o;D;E[ ;@;F"1.5;f1.5;G@…;iú")@"(o; 	;@;" min--moz-device-pixel-ratio;;2;iú": o;D;E[ ;@;F"1.5;f1.5;G@…;iú")@"(o; 	;@;"min-resolution;;2;iú": o;D;E["dpi;@;F"144dpi;iê;G[ ;iú");i ;iúo;
+
+;@;["∑/*////////////////////////////
+ * Actual Hotness
+ *
+ * Do to a bug plus a design decision, I cannot extend the background image
+ *   like I would like to or you would do by hand. This is how it'll work
+ *   when I can.
+ *////////////////////////////
+ *  @media (-webkit-max-device-pixel-ratio: 1.4), (max--moz-device-pixel-ratio: 1.4), (-o-max-device-pixel-ratio: 7/5), (min-resolution: 1.4dppx), (min-resolution: 134.4dpi) {
+ *      @extend %#{sprite-map-name($png-path)}-image-map;
+ *      @include sprite($png-path, $sprite)
+ *    }
+ *    @media (-webkit-max-device-pixel-ratio: 1.5), (max--moz-device-pixel-ratio: 1.5), (-o-max-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx), (min-resolution: 144dpi) {
+ *      @extend %#{sprite-map-name($png2x-path)}-image-map;
+ *      @include sprite($retina-map, $sprite);
+ *      @if $with-dimensions {
+ *        background-size: image-width($sprite-file) image-height($sprite-file);
+ *      }
+ *    } */;	[ ;;;iß;[[o;;"img_path;@;"img-path0[o;;"sprite;@;"sprite0[o;;"with_dimensions;@;"with-dimensionso;	;"$replace_text_pe_with_dimensions;@;"$replace-text-pe-with-dimensions;iz;izo;
+
+;@;["S/*////////////////////////////
+ * Sprite Map Generator
+ *
+ * Need a custom mixin to create extendable classes classes for background image for sprites because dynamic mixin names don't work.
+ *
+ * - $png-path: The path to the pngs for the image sprite, including the *.png (just like normal image sprites)
+ *//////////////////////////// */;	[ ;;;iªo;;@;0;"sprite-map-generator;T;	[o;;o;#
+;@;$o; 	;@;"/*.png;;!;i√;%o;	;"img_path;@;"img-path;i√;&;';i√;@;"png-path;	[ ;i√;"0o;;o;(;@;0;"sprite-map;[o;	;"png_path;@;"png-path;iƒ;){ ;iƒ;@;"png-path;	[ ;iƒ;"0u;Ä[o:Sass::Script::Operation
+:@options{ :@operand2o:Sass::Script::String	;@:@value"retina:
+@type:string:
+@linei∆:@operand1o:Sass::Script::Variable	:@underscored_name"method;@:
+@name"method;i∆:@operator:eq;i∆u:Sass::Tree::IfNode.[00[o:Sass::Tree::RuleNode:
+@rule["%o:Sass::Script::Funcall:@options{ :@splat0:
+@name"sprite-map-name:
+@args[o:Sass::Script::Variable	:@underscored_name"png_path;@;
+"png-path:
+@linei„:@keywords{ ;i„"-image-map;@:@has_childrenT:@children[o:Sass::Tree::PropNode:@prop_syntax:new;@;
+["background:@valueo:Sass::Script::String;@;" :
+@type:identifier;T;[o;;;;@;
+["
+image;o;	;"png_path;@;
+"png-path;iÂ;[ :
+@tabsi ;iÂo;;;;@;
+["repeat;o;;@;"no-repeat;;;[ ;i ;iÊ;i ;i‰;i ;i„[
+o:Sass::Tree::VariableNode:
+@expro; 
+;@;o;	;@;	"_2x/*.png;
+;;i«;o;	;"img_path;@;"img-path;i«;:	plus;i«;@;"png2x-path:@children[ ;i«:@guarded0o;;o:Sass::Script::Funcall;@:@splat0;"sprite-map:
+@args[o;	;"png2x_path;@;"png2x-path;i»:@keywords{ ;i»;@;"png2x-path;[ ;i»;0o:Sass::Tree::RuleNode:
+@rule["%o;;@;0;"sprite-map-name;[o;	;"png_path;@;"png-path;i ;{ ;i "-image-map-fallback;@:@has_childrenT;[o:Sass::Tree::PropNode:@prop_syntax:new;@;["background;	o;;@;	" ;
+:identifier;T;[o; ;!;";@;["
+image;	o;	;"png_path;@;"png-path;iÃ;[ :
+@tabsi ;iÃo; ;!;";@;["repeat;	o;;@;	"no-repeat;
+;#;[ ;$i ;iÕ;$i ;iÀ;$i ;i o:Sass::Tree::MediaNode;@;	" ;T;[o;;["%o;;@;0;"sprite-map-name;[o;	;"png_path;@;"png-path;i“;{ ;i“"-image-map;@;T;[o; ;!;";@;["background;	o;;@;	" ;
+;#;T;[o; ;!;";@;["
+image;	o;	;"png_path;@;"png-path;i‘;[ ;$i ;i‘o; ;!;";@;["repeat;	o;;@;	"no-repeat;
+;#;[ ;$i ;i’;$i ;i”;$i ;i“:@query["(o;	;@;	"max-resolution;
+;#;i—": o:Sass::Script::Number:@numerator_units["	dppx;@:@original"1.4dppx;	f1.3999999999999999 ff:@denominator_units[ ;i—")", "(o;	;@;	"#-webkit-max-device-pixel-ratio;
+;#;i—": o;';([ ;@;)"1.4;	f1.3999999999999999 ff;*[ ;i—")@o"(o;	;@;	" max--moz-device-pixel-ratio;
+;#;i—": o;';([ ;@;)"1.4;	f1.3999999999999999 ff;*@x;i—")@o"(o;	;@;	"max-resolution;
+;#;i—": o;';(["dpi;@;)"134.4dpi;	f134.40000000000001 ÃÕ;*[ ;i—");$i ;i—o;%;@;	" ;T;[o;;["%o;;@;0;"sprite-map-name;[o;	;"png2x_path;@;"png2x-path;i⁄;{ ;i⁄"-image-map;@;T;[o; ;!;";@;["background;	o;;@;	" ;
+;#;T;[o; ;!;";@;["
+image;	o;	;"png2x_path;@;"png2x-path;i‹;[ ;$i ;i‹o; ;!;";@;["repeat;	o;;@;	"no-repeat;
+;#;[ ;$i ;i›;$i ;i€;$i ;i⁄;&["(o;	;@;	"min-resolution;
+;#;iŸ": o;';(["	dppx;@;)"1.5dppx;	f1.5;*[ ;iŸ")", "(o;	;@;	"#-webkit-min-device-pixel-ratio;
+;#;iŸ": o;';([ ;@;)"1.5;	f1.5;*@x;iŸ")@∑"(o;	;@;	" min--moz-device-pixel-ratio;
+;#;iŸ": o;';([ ;@;)"1.5;	f1.5;*@x;iŸ")@∑"(o;	;@;	"min-resolution;
+;#;iŸ": o;';(["dpi;@;)"144dpi;	iê;*[ ;iŸ");$i ;iŸ;[[o;;"img_path;@;"img-path0[o;;"method;@;"methodo;	;"replace_text_pe_method;@;"replace-text-pe-method;i¬;i¬o;
+
+;@;["o/*////////////////////////////
+ * Extendable Class for Squish Text mixin
+ *//////////////////////////// */;	[ ;;;iÓo;;["%replace-text-pe-squish;@;6o;7;8" ;iÒ;9[o;:;9[o;;
+;<0;8@m;=o;>;?{ ;iÒ;9[o: Sass::Selector::Placeholder;["replace-text-pe-squish;8@m;iÒ;T;	[o;.;@;0;"squish-text;	[ ;[ ;){ ;iÚ;i ;iÒo;
+
+;@;["m/*////////////////////////////
+ * Extendable Class for Hide Text mixin
+ *//////////////////////////// */;	[ ;;;iıo;;["%replace-text-pe-hide;@;6o;7;8" ;i¯;9[o;:;9[o;;
+;<0;8@Ü;=o;>;?{ ;i¯;9[o;H;["replace-text-pe-hide;8@Ü;i¯;T;	[o;.;@;0;"hide-text;	[ ;[ ;){ ;i˘;i ;i¯;i

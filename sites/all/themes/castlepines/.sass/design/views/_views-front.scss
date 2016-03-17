@@ -1,0 +1,134 @@
+.front-calls {
+	.views-row {
+		text-align: center;
+		padding: 0 1em;
+		@include breakpoint($tablet, $no-query: '.no-mq') {
+			width: 49%;
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+}
+
+.front-site-intro {
+		padding: 1em 1em 0;
+		@include breakpoint($tablet, $no-query: '.no-mq') {
+			position: absolute;
+			width: 50%;
+			right: 2em;
+			background: rgba(255, 255, 255, 0.73);
+			padding: 1em;
+			border-radius: 10px;
+			top: 11em;
+
+		}
+		@include breakpoint($desktop, $no-query: '.no-mq') {
+			width: 33%;
+		}
+		h1 {
+			font-size: 195%;
+		}
+}
+
+.front-call-blocks {
+		@include breakpoint($desktop, $no-query: '.no-mq') {
+			display: inline-block;
+			vertical-align: top;
+			width: 68%;
+		}
+		@include breakpoint($lg-desktop) {
+			width: 73%;
+		}
+}
+.front-sign-up {
+	@include breakpoint($desktop, $no-query: '.no-mq') {
+		display: inline-block;
+		vertical-align: top;
+		width: 30%;
+	}
+	@include breakpoint($lg-desktop) {
+		width: 25%;
+	}
+	.ds-one {
+		display: none;
+	}
+	.ds-two {
+		@include breakpoint($tablet) {
+			padding: 2rem;
+		}
+		@include breakpoint($desktop, $no-query: '.no-mq') {
+			padding: 0;
+		}
+		fieldset {
+			margin-top: 0 !important;
+		}
+		input[type='text'], input[type='email'] {
+			width: 100%;
+		}
+	}
+}
+
+.front-post-block {
+
+	h2 {
+		background: $green;
+		margin: 0;
+		font-size: 140%;
+		a {
+			color: $white;
+			padding: 1rem 1rem; 
+			display: block;
+		}
+	}
+	h6 {
+		margin-bottom: .25rem;
+	}
+	.upcoming-date {
+    color: #562F24;
+		.date-display-single {
+			padding-right: .5rem;
+		}
+	}
+}
+
+.front-events {
+	.view-content {
+		padding: 1rem;
+	}
+	.views-row {
+		@include breakpoint($tablet, $no-query: '.no-mq') {
+			width: 47%;
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+}
+
+
+.front-gallery {
+	.views-row  {
+		padding: 0 0 .2rem .4rem;	
+		h2 {
+			margin: 0 0 .4rem -.4rem;
+		}
+		a {
+			img {
+				width: 100%;
+			}
+		}
+	}
+	.gallery-img-1 {
+		width: 33%;
+		line-height: 0;
+		display: inline-block;
+		vertical-align: top;
+		padding: .15rem .15rem .3rem;
+	}
+	.gallery-img-2 {
+		width: 65%;
+		line-height: 0;
+		display: inline-block;
+		vertical-align: top;
+		padding: .15rem .15rem .3rem;
+	}
+}

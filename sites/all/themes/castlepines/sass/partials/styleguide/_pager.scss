@@ -1,0 +1,44 @@
+ul.pager {
+  margin: 3em 0 0;
+  padding: 3em 0 0;
+  border-top: 1px solid #EFEFEF;
+  li {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 0.5em;
+    width: auto;
+    &.pager-next, &.pager-last, &.pager-previous, &.pager-first {
+      opacity: .5;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    &.pager-current {
+      background: $hover;
+      color: #FFF;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 700;
+      padding-top: 2px;
+      font-size: 90%;
+      margin: 0 0.5em;
+
+    }
+    a {
+      background: $green;
+      color: #FFF;
+      width: 30px;
+      height: 30px;
+      display: block;
+      text-align: center;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 700;
+      padding-top: 2px;
+      font-size: 90%;
+    }
+  }
+}

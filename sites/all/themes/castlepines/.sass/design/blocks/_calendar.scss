@@ -1,0 +1,41 @@
+.calendar-calendar div.calendar {
+  font-size: 90%;
+}
+.calendar-calendar .month-view .full td.single-day div.monthview, .calendar-calendar .week-view .full td.single-day div.weekview, .calendar-calendar .day-view .full td.single-day div.dayview {
+  background: none;
+  padding: .25em;
+
+}
+
+.calendar-calendar .month-view .full td.multi-day div.monthview, .calendar-calendar .week-view .full td.multi-day div.weekview, .calendar-calendar .day-view .full td.multi-day div.dayview {
+  background: rgba(99, 168, 105, 0.35);
+  border-radius: 0;
+}
+
+.calendar-calendar .month-view .full tr td.multi-day.starts-today {
+  border: 0;
+  padding: 0;
+}
+
+.calendar-calendar .month-view .full td.multi-day .inner .monthview .cutoff, .calendar-calendar .week-view .full td.multi-day .inner .weekview .cutoff {
+  background: none;
+}
+.calendar-calendar .month-view .full td.date-box.today, .calendar-calendar .month-view .full tr td.single-day.today {
+  border-color: $green;
+  border: 0;
+  background: rgba(99, 168, 105, 0.14);
+}
+.calendar-calendar .month-view .full tr td.single-day.today {
+  border-bottom: 1px solid #ccc;
+}
+
+.calendar-calendar td .inner div.day a {
+  color: inherit;
+}
+
+.calendar-calendar {
+  .views-field-title {
+    line-height: 1;
+  }
+
+}

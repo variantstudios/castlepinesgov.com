@@ -1,0 +1,35 @@
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media \0screen {img { width: auto }} /* Prevent height distortion in IE8. */
+
+.headshot {
+  img {
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.3);
+  }
+}
+
+.inline-image {
+  padding: 1em;
+  @include breakpoint($tablet, $no-query: '.no-mq') {
+    width: 50%;
+    float: right;
+  }
+}
+
+
+img.media-element.file-default {
+	margin: 2em 0;
+}
+
+.file-image.view-mode-two_col_image {
+	img {
+		width: 100%;
+	}
+}
+
+img.media-element.file-preview {
+	margin-right: 1em;
+}

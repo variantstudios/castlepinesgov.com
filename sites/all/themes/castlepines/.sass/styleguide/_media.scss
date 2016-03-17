@@ -1,0 +1,18 @@
+/**
+ * There isn't much to place in here, but if there is
+ * special media treatment on the site place it here
+ */
+
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

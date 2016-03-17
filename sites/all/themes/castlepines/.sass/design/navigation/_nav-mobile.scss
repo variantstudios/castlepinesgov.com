@@ -1,0 +1,122 @@
+@include breakpoint($tablet-down) {
+	.menu-toggle {
+		padding: .65em 1em;
+		width: 60px;
+		background: darken($green, 10%);
+		margin:0;
+		z-index: 999;
+		position: absolute;
+		right: 1.5em;
+		top: 4em;
+		border-radius: 4px;
+@include breakpoint($small-tablet-down) {
+		right: 0;
+		top:0;
+		border-radius: 0;
+}
+		.line {
+			border-color: $white;
+			border-width: 2px;
+		}
+		.toggle-help {
+			display: none;
+		}
+	}
+	
+	.front {
+		/*.menu-toggle {
+			margin-bottom: 6.5em;
+		}*/
+		.main-navigation {
+			float: right;
+			width: 100%;
+		}
+	}
+	
+	.main-navigation {
+		width: 100%;
+
+	}
+	.main-menu {
+		width: 100%;
+		position: absolute;
+		background: $green;
+		z-index: 99;
+		top: 8rem;
+		@include breakpoint($small-tablet-down) {
+				top: 2.7rem;
+		}
+		li {
+		width: 100%;
+			a {
+				padding: .5em 1em;
+				border-bottom: 1px solid #fff;
+				border-top: 1px solid #fff;
+				background: #569b5c;
+				font-size: 120%;
+			}
+			ul {
+				width: 100% !important;
+				float: none;
+				li {
+					display: inline-block;
+					vertical-align: top;
+					width: auto;
+					a {
+						border: 0;
+						background: none;
+						font-size: 100%;
+						display: inline-block;
+						background: #3F7944;
+						margin: 0.5rem .5rem 0.5rem;
+						border-radius: 6px;
+					}
+				}
+				ul {
+					max-height: none;
+					overflow: visible;
+
+				}
+			}
+		}
+	}
+
+}
+
+#block-menu-menu-top-menu {
+ @include breakpoint($small-tablet-down) {
+	 position: absolute;
+		top: 0;
+		width: 100%;
+		background: #fff;
+		z-index: 999;
+		padding-right: 60px;
+
+ }
+ ul {
+	   @include breakpoint($small-tablet-down) {
+		  text-align: center;
+		  @include mp-reset;
+		  li {
+			  padding: .5em .5em;
+				margin: 0;
+				@include breakpoint($small-tablet-down) {
+					&.first {
+						display: none;
+					}
+				}
+		  }
+	  }
+  }
+}
+
+@include breakpoint($small-tablet-down) {
+	.front header#header {
+		@include clearfix;
+		height: 415px;
+	}
+	.not-front header#header {
+		@include clearfix;
+		height: 345px;
+	}
+}

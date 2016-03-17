@@ -1,0 +1,57 @@
+.not-front header#header {
+  @include clearfix;
+  padding: 0em 0 1em;
+  position: relative;
+  &:before {
+	  content: '';
+	  background: url('../images/theme/sub-page-header.jpg') no-repeat;
+	  height: 270px;
+		width: 100%;
+		z-index: -999;
+		top: 0;
+		position: absolute;
+  }
+}
+
+/*.front header#header {
+	@include clearfix;
+  padding: 0em 0 1em;
+  position: relative;
+	&:before {
+	  content: '';
+	  background: url('../images/theme/front-bg.jpg') no-repeat;
+	  height: 630px;
+		width: 100%;
+		z-index: -999;
+		top: 0;
+		position: absolute;
+  }
+}*/
+
+.front header .slider {
+	@include clearfix;
+  padding: 0em 0 1em;
+  position: relative;
+  height: 400px;
+	width: 100%;
+	z-index: -999;
+	@include breakpoint($tablet, $no-query: '.no-mq') {
+	  height: 630px;
+	}
+
+}
+
+.front header#header {
+	@include clearfix;
+	@include breakpoint($small-tablet-down) {
+		//margin-bottom: 10em;
+	}
+		.slider-wrap {
+		@include breakpoint($small-tablet-down) {
+	    position: absolute;
+	    top: 1em;
+	    height: 400px;
+	    width: 100%;
+		}
+	}
+}

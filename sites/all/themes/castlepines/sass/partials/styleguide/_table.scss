@@ -1,0 +1,10 @@
+div.wrapper--content > table {
+  background: $gray-90;
+  width: 100% !important;
+  text-align: left;
+  margin: 1em 0;
+  th, td {
+    border: 1px solid $gray-80;
+    padding: .25em .75em;
+  }
+}

@@ -1,0 +1,218 @@
+div.vertical-tabs {
+	background: #fff;
+}
+
+fieldset {
+	background: #fff;
+}
+
+
+.page-node-edit, .page-node-add, .page-node-webform-components, .page-node-webform {
+	#wrapper--content {
+		.container-main {
+			width: 100%;
+			border: 0;
+		}
+		.container-sidebar {
+			display: none;
+		}
+	}	
+	
+.container-main form {
+		label {
+			width: auto;
+		}
+		.form-textarea-wrapper {
+				display: block;
+				width: 100%;
+			}
+		input[type="text"], input[type="password"], input[type="email"], input[type="file"], textarea, select {
+			border: 1px solid #C2C2C2;
+			padding: .5em 1em;
+			font-size: 100%;
+			width: 100%;
+		}
+		.cke_wysiwyg_frame, .cke_wysiwyg_div {
+			padding: 0 2rem;
+			box-sizing: border-box;
+		}
+		.wysiwyg-toggle-wrapper {
+			padding: 1rem 1rem 2rem;
+			background: #efefef;
+			border-left: 1px solid #cccccc;
+			border-right: 1px solid #cccccc;
+		}
+		#edit-body-und-0-format {
+			margin: -1em 0 0;
+			padding: 0em 1em 2rem;
+			background: #efefef;
+		}
+		.form-managed-file .form-submit {
+			margin: 1em 1em 1em 0;
+			background: $green;
+		}
+		fieldset {
+			margin: 2rem 0;
+			@include clearfix;
+			border-radius: 4px;
+			font-family: $base-font-family;
+			height: auto;
+			border: 1px solid #CCC !important;
+			&.collapsed {
+				legend {
+					margin: 0;
+				}
+			}
+			&.collapsible {
+				.fieldset-wrapper {
+					overflow: visible !important;
+				}
+			}
+			legend {
+				display: block;
+				float: left;
+				width: 100%;
+				margin: 1rem 0;
+				span {
+					font-weight: 700;
+					font-size: 120%;
+				}
+			}
+		}
+		
+		table {
+		width: 100%;
+		td {
+			padding: .5em 1em;
+		}
+			tr {
+				th {
+					padding: 1rem;
+					border-bottom-width: 1px;
+				}
+			}
+		}
+		
+	}
+	.form-actions {
+		text-align: right;
+		.form-submit {
+			background: #E0B9AD;
+		}
+		#edit-submit {
+			background: $green;
+		}
+		#edit-delete {
+			background: #D62D2D;
+		}
+	}
+	
+	label.option {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	.form-type-radios  {
+		.form-radios {
+			padding-left: 2rem;
+			input {
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+		.form-item .form-item {
+			display: inline-block;
+		}
+	}
+	.webform-container-inline div, .webform-container-inline div.form-item {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	.container-inline-date .form-item .form-item {
+		margin-right: 2rem;
+	}
+
+	.container-inline-date .form-item.form-item-field-event-date-und-0-value2  {
+		margin-right: 2rem;
+		& > label {
+			clear: both;
+			margin: 0rem 0.5rem 0.5rem;
+			display: block;
+			text-transform: uppercase;
+			width: 100%;
+		}
+	}
+
+	#repeat-settings-fieldset {
+		.date-clear.weekly, .date-clear.range-of-repeat {
+			label {
+				vertical-align: middle;
+				margin-right: 1rem;
+			}
+			input {
+		    width: auto;
+		    vertical-align: middle;
+		    padding: .5em;
+			}
+		}
+	}
+	.field-type-image, .field-type-linkimagefield {
+		background: #fff;
+		padding: 2rem;
+		@include clearfix;
+			border-radius: 4px;
+			border: 1px solid #ccc;
+			margin: 2rem 0;
+	}
+}
+
+.views-table {
+	width: 100%;
+}
+
+a.tabledrag-handle .handle {
+	width: 26px;
+	height: 26px;
+}
+
+
+ul.tabs {
+	margin: 1rem 0 2rem;
+	border-radius: 4px;
+	background: $green;
+	border: 1px solid #ccc;
+	padding: .75rem 1rem;
+	display: inline-block;
+	li {
+		@include mp-reset;
+		a {
+			padding: .5rem 1.2rem;
+			font-family: $base-font-family;
+			display: inline-block;
+			font-weight: 700;
+			border-radius: 4px;
+			background: #fff;
+			border: 1px solid $green;
+			&.active {
+				background: lighten($green, 10%);
+				color: #fff;
+				border: 0;
+			}
+		}
+	}
+}
+ul.tabs.secondary {
+	display: block;
+	background: none;
+	padding: 0;
+	border: 0;
+	margin-top: 0;
+	font-size: 85%;
+	li {
+		border: 0;
+	}
+	a {
+		margin-right: 0.5em;
+	}
+}

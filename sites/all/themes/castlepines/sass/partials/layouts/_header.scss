@@ -1,0 +1,40 @@
+header {
+  @include clearfix;
+}
+.site-name {
+  @include breakpoint($tablet, $no-query: '.no-mq') {
+    @include grid-span(6, 1);
+  }
+  @include breakpoint($desktop, $no-query: '.no-mq') {
+    @include grid-span(2.5, 1);
+  }
+}
+
+.top-nav {
+  @include breakpoint($desktop, $no-query: '.no-mq') {
+	//@include grid-span(2, 8);
+  	float: left;
+	margin-top: 6px;
+	margin-right: -100%;  
+	clear: none;
+	margin-left: 440px;
+  }
+  @include breakpoint($desktop, $no-query: '.no-mq') {
+	margin-left: 600px;
+  }
+  @include breakpoint($lg-desktop) {
+	margin-left: 772px;
+  }
+}
+.block-search {
+  @include breakpoint($tablet) {
+    margin-top: 5em;
+    @include grid-span(6, 6);
+    margin-left: 0;
+  }
+  @include breakpoint($desktop, $no-query: '.no-mq') {
+    margin-top: 0;
+    @include grid-span(3, 10);
+  }
+}
+

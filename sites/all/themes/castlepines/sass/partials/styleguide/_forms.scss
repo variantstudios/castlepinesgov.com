@@ -1,0 +1,170 @@
+input[type="text"], input[type="email"], textarea, input[type="password"], input[type="file"], input[type="number"], input[type="search"],  #edit-item  {
+  background-color: #fff;
+  border: 1px solid #dcd9d7;
+  height: auto;
+  padding: 1em;
+  width: 100%;
+  outline: none;
+  //-webkit-appearance: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: $base-font-family;
+  border-radius: 3px;
+  &:active, &:focus {
+    box-shadow: 0px 2px 18px -1px #ccc;
+  }
+  &:active, &:hover, &:focus {
+    //box-shadow: none;
+    //outline: none;
+  }
+}
+
+input[type="search"] {
+	-webkit-appearance: none;
+}
+
+[type='submit'][disabled=disabled] {
+  opacity: .5;
+}
+input[type="password"], input[type="file"] {
+  width: auto;
+  display: block;
+}
+
+textarea {
+  max-width: 100%;
+  outline: none;
+}
+
+.form-item {
+  margin: 0em 0 2em;
+}
+
+
+div.description {
+  font-style: italic;
+  margin: 1em 0;
+}
+
+form i {
+  color: lightgray;
+}
+form label {
+  display: block;
+  margin: 0 0 5px 0;
+}
+
+
+input:-webkit-autofill {
+    font-size: 100%;
+}
+
+input:-webkit-autofill:focus {
+    font-size: 100%;
+}
+/* Remove Webkits' horrible focus glow */
+input:focus, textarea:focus {
+  //outline: none;
+}
+/* This is to hide the "honeypot" field */
+.hidden {
+  display: none;
+}
+
+/* Email messages shown after submitted (sucess and fail) */
+.email--message {
+  padding: 3px 20px;
+  margin: 10px 0;
+}
+.email--yes {
+  background-color: #efedff;
+}
+.email--no {
+  background-color: #FF7373;;
+}
+
+/* Form Error */
+form input.error{
+  background: #f8dbdb;
+  border-color: #e77776;
+}
+form textarea.error{
+  background: #f8dbdb;
+  border-color: #e77776;
+}
+form div span.error{
+  color: #e46c6e;
+}
+form i.error {
+  color: lightgray;
+}
+
+
+/* Form Sucess */
+form input.sucess{
+  border-color: none;
+  background: white;
+}
+form textarea.sucess{
+  border-color: none;
+  background: white;
+}
+form div span.sucess{
+  color: green;
+}
+
+form i.sucess {
+  color: green;
+}
+
+
+// Validation
+.form-item input.error, .form-item textarea.error {
+  border: 1px solid $error;
+}
+
+.form-item input.valid, .form-item textarea.valid {
+  border: 1px solid $valid;
+}
+
+span.error, label.error {
+  color: $error;
+  font-style: italic;
+  font-size: 80%;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  display: block;
+  width: auto;
+  @include breakpoint($desktop) {
+    padding-left: 19%;
+  }
+
+}
+.dropdown {
+}
+
+.dropdown select {
+  font-family: $base-font-family;
+  border: 1px solid #ccc !important;  /*Removes border*/
+  padding: .25em 1.25em;
+  border-radius: 3px;
+  -webkit-appearance: none;  /*Removes default chrome and safari style*/
+  -moz-appearance: none; /* Removes Default Firefox style*/
+  background: url('http://jonathanphz.tk/dropdown_arrow.png') no-repeat;  /*Adds background-image*/
+  background-position: 95% 50%;  /*Position of the background-image*/
+  width: 200px; /*Width of select dropdown to give space for arrow image*/
+  height: 40px;/*fix for mac input height*/
+  text-indent: 0.01px; /* Removes default arrow from firefox*/
+  text-overflow: "";  /*Removes default arrow from firefox*/
+  cursor: pointer;
+  background-color: #fff;
+  /*My custom style for fonts*/
+}
+
+.dropdown select:disabled {
+  opacity: .5;
+}
+  select option {
+    text-align: center;
+  }

@@ -1,0 +1,102 @@
+/**
+* Form elements: Inputs, buttons, etc.
+*/
+
+form {
+}
+
+fieldset {
+  border: 1px solid $gray_80;
+  padding: 0.5em 1.5em;
+}
+
+legend {
+}
+
+
+label,
+input,
+button,
+select,
+textarea {
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: $base-font-family; // And only set font-family here for those that need it (note the missing label element)
+
+}
+
+label {
+	display: block;
+	vertical-align: top;
+
+}
+
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="file"],
+textarea,
+select {
+  outline: none;
+  -webkit-appearance: none;
+  border: 1px solid $gray_90;
+  padding: .5em 1em;
+  font-size: 95%;
+  margin: .4em 0;
+  border-radius: 4px;
+  vertical-align: top;
+  width: 100%;
+  @include breakpoint($tablet, $no-query: '.no-mq') {
+		width: auto;
+	}
+  &:focus {
+    -webkit-appearance: none;
+    border: 1px solid $gray_90;
+    box-shadow: 1px 2px 4px rgba(0,0,0,.2);
+  }
+}
+
+select {
+  background-image: url('../images/system/menu-expanded.png');
+  background-repeat: no-repeat;
+  background-position: 92% 60%;
+  background-color: #FFF;
+  padding: .4em 2em .4em 1em;
+ text-indent: 0.01px;
+  text-overflow: "";
+  -moz-appearance: none;
+}
+
+textarea {
+  line-height: 1.7;
+}
+
+.form-textarea-wrapper {
+	display: inline-block;
+  width: auto;
+}
+
+input[type="checkbox"] {
+}
+
+
+
+
+.filter-wrapper {
+  margin: -1em 0 0;
+  padding: 0.5em 1em;
+  .form-item {
+    padding: 0;
+  }
+  .filter-guidelines {
+    padding: 0;
+  }
+  li {
+    margin-bottom: 0;
+  }
+}

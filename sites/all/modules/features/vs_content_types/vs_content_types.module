@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the VS Content Types feature.
+ */
+
+include_once 'vs_content_types.features.inc';

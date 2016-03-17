@@ -1,0 +1,122 @@
+
+.separator {
+  padding: 3em 0 1em;
+margin: 2em 0 1rem;
+  border-top: 1px solid #DDD;
+  @include clearfix;
+}
+
+.contact {
+	text-decoration: none;
+    i.fa-envelope {
+    font-size: 90%;
+    text-decoration: none;
+  }
+}
+
+.col-2 {
+  i.fa-envelope {
+     padding-left: 1em;
+  }
+}
+
+.one-col {
+  img.media-element.file-teaser {
+    width: 100%;
+    padding: .5em 0em;
+    @include breakpoint($tablet, $no-query: '.no-mq') {
+      width: 50%;
+      padding: 0em 1.5em;
+    }
+  }
+}
+
+.view-goals {
+	margin: 1em 0 0;
+}
+.field-collection-item-field-goals.view-mode-full {
+	padding: 1.4em 0 1.1em;
+	border-bottom: 1px solid #DDD;
+	.ds-one {
+		width: 60px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.ds-two {
+		display: inline-block;
+		vertical-align: middle;
+		width: 79%;
+		padding-left: 2em;
+		@include breakpoint($tablet, $no-query: '.no-mq') {
+			width: 90%;
+		}
+		h6 {
+			display: inline-block;
+			padding-right: .5em;
+			margin: 0;
+		}
+		p {
+			display: inline;
+		}
+	}
+}
+
+
+.block-call {
+  background: #2B6899;
+  color: #FFF;
+  border-radius: 6px;
+  text-align: center;
+}
+.block-call:hover {
+  background: #1A4D75;
+}
+@media (min-width: 48em) {
+  .block-call {
+    margin: 2.5em 0em 0;
+  }
+}
+.no-mq .block-call {
+  margin: 2.5em 0em 0;
+}
+@media (min-width: 61.25em) {
+  .block-call {
+    margin: 2.5em 0em 0;
+  }
+}
+.no-mq .block-call {
+  margin: 2.5em 0em 0;
+}
+.block-call h4 {
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+.block-call i {
+  font-size: 200%;
+  margin: 0 1rem;
+  vertical-align: middle;
+}
+.block-call a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  padding: 1.5rem 1em;
+}
+@media (min-width: 48em) {
+  .block-call a {
+    padding: 1.5rem 4em;
+  }
+}
+.no-mq .block-call a {
+  padding: 1.5rem 4em;
+}
+@media (min-width: 61.25em) {
+  .block-call a {
+    padding: 1.5rem 8em;
+  }
+}
+.no-mq .block-call a {
+  padding: 1.5rem 8em;
+}

@@ -1,0 +1,23 @@
+.bx-wrapper {
+	position: relative;
+	padding: 0 1em;
+}
+
+.bx-controls {
+	a {
+		text-decoration: none;
+		position: absolute;
+		margin-top: -1em;
+		top: 50%;
+	}
+}
+
+.bx-prev {
+	@include icon("\f053");
+	left: -10px;
+}
+
+.bx-next {
+	@include icon("\f054");
+	right: -10px;
+}

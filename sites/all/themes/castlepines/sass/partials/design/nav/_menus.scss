@@ -1,0 +1,275 @@
+a#mobile-toggle {
+  @include breakpoint($desktop, $no-query: '.no-mq') {
+      display: none;
+    }
+}
+
+#mobile-menu {
+  @include breakpoint($desktop, $no-query: '.no-mq') {
+    display: none;
+  }
+}
+
+nav {
+  @include breakpoint($tablet, $no-query: '.no-mq') {
+    margin-top: .6em;
+  }
+  ul {
+    @include mp-reset;
+    @include clearfix;
+  }
+  li {
+     @include breakpoint($desktop, $no-query: '.no-mq') {
+      display: inline-block;
+      @include mp-reset;
+      float: left;
+      
+    }
+    a, a:link, a:visited , span.nolink{
+      text-decoration: none;
+      display: inline-block;
+      color: $text;
+      @include breakpoint($desktop, $no-query: '.no-mq') {
+        padding: 0 .7em; 
+        font-size: 90%;
+        font-weight: 700;
+        text-align: center;
+      }
+      &:hover {
+        color: darken($text, 20%);
+      }
+      &.start-project {
+        font-weight: 700;
+        @include breakpoint($desktop, $no-query: '.no-mq') {
+        border: 1px solid #FFF;
+        border-radius: 6px;
+        margin-left: .5em;
+        }
+      }
+    }
+  }
+}
+
+.main-nav {
+   width: 100%;
+  @include mp-reset;
+  background: #ededed; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ededed 0%, #fcfcfc 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#fcfcfc)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ededed 0%,#fcfcfc 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ededed 0%,#fcfcfc 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ededed 0%,#fcfcfc 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #ededed 0%,#fcfcfc 100%); /* W3C */
+  border-bottom: 4px solid #FFF;
+  @include breakpoint($desktop, $no-query: '.no-mq') {
+    max-height: none !important;
+    float: none !important;
+  }
+  li.expanded {
+    @include breakpoint($desktop, $no-query: '.no-mq') {
+      border-bottom: 5px solid $gray-50;
+      position: relative;
+      width: 16.6667%;
+      margin: 0;
+      padding: 0;
+      &:first-child {
+        border-bottom-color: $section-1;
+        a {
+          border-left: 0 !important;
+        }
+      }
+      &:nth-child(2){
+        border-bottom-color: $section-2;
+      }
+      &:nth-child(3){
+        border-bottom-color: $section-3;
+      }
+      &:nth-child(4){
+        border-bottom-color: $section-4;
+      }
+      &:nth-child(5){
+        border-bottom-color: $section-5;
+      }
+      &:last-child {
+        border-right: none;
+        border-bottom-color: $section-6;
+        a {
+          border-right: 0 !important;
+        }
+      }
+    }
+    &:hover {
+      &:nth-child(1) {
+        background: $section-1;
+      }
+      &:nth-child(2) {
+        background: $section-2;
+      }
+      &:nth-child(3) {
+        background: $section-3;
+      }
+      &:nth-child(4) {
+        background: $section-4;
+      }
+      &:nth-child(5) {
+        background: $section-5;
+      }
+      &:nth-child(6) {
+        background: $section-6;
+      }
+      a , span{
+        color: #fff;
+      }
+    }
+    a, a:link, span.nolink {
+      display: block;
+      @include breakpoint($desktop, $no-query: '.no-mq') {
+        padding: 1em 0em;
+        font-size: 70%;
+        text-transform: uppercase;
+        border-right: 2px solid #FFF;
+        border-left: 2px solid #FFF;
+        width: 100%;
+      }
+      @include breakpoint($desktop, $no-query: '.no-mq') {
+        padding: 1em 0em;
+        font-size: 96%;
+      }
+      @include breakpoint($lg-desktop) {
+        font-size: 101.5%;
+        padding: 1.1em 0em;
+      }
+    }
+
+}
+  ul {
+    li{
+      &:nth-child(1) ul {
+        border-top-color: $section-1;
+      }
+      &:nth-child(2) ul {
+        border-top-color: $section-2;
+      }
+      &:nth-child(3) ul {
+        border-top-color: $section-3;
+      }
+      &:nth-child(4) ul {
+        border-top-color: $section-4;
+      }
+      &:nth-child(5) ul {
+        border-top-color: $section-5;
+      }
+      &:nth-child(6) ul {
+        border-top-color: $section-6;
+        right: -5px;
+        left: auto;
+        box-shadow: -2px 5px 8px rgba(0, 0, 0, 0.3);
+      }
+    }
+    li:hover > ul, li.open > ul {
+        @include breakpoint($desktop, $no-query: '.no-mq') {
+          display:block
+        }
+      }
+    ul {      
+        @include breakpoint($desktop, $no-query: '.no-mq') {
+          display:none;
+          position:absolute;
+          top:100%;
+          left:0;
+          background:#fff;
+          padding:0;
+          z-index: 999;
+          border-top: 10px solid $gray-50;
+          box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
+          width: 300px;
+        }
+        li {
+            float:none;
+            padding: 0;
+						margin: 0;
+            @include breakpoint($desktop, $no-query: '.no-mq') {
+               //width:300px;
+               width: 100%;
+            }
+            a {
+              padding: 1.15em 1.75em !important;
+              font-size: 92% !important;
+              line-height: 1;
+              @include breakpoint($desktop, $no-query: '.no-mq') {
+                color: $text !important;
+              }
+              text-align: left;
+              &:hover {
+                color: darken($text, 20%) !important;
+                background: #efefef;
+              }
+            }
+        }
+    }
+  }
+  ul {
+    ul {
+      line-height: 0;
+    }
+  }
+  ul ul li.expanded.dropdown {
+    width: 100%;
+    border: 0;
+  }
+  ul ul ul {
+    left: 300px;
+    top: 0;
+    border: 0;
+  }
+}
+.top-nav {
+  @include breakpoint($tablet-down) {
+   background: $green;
+   width: 50%;
+   text-align: center;
+   padding: 0 0;
+   position: absolute;
+   right: 0;
+   
+  }
+ ul {
+  padding: 0;
+  margin:0;
+  @include breakpoint($tablet-down) {
+    text-align: center;
+  }
+    li {
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+      @include breakpoint($tablet-down) {
+       display: inline-block;
+       vertical-align: middle;
+       font-weight: 700;
+      }
+      a, a:link {
+	    text-decoration: none;
+	    color: $gray-60;
+	    &:hover {
+			border-bottom: 1px solid $green;
+    	}
+        @include breakpoint($tablet-down) {
+         display: block;
+         padding: .5em;
+         color: #fff;
+         
+        }
+        @include breakpoint($desktop, $no-query: '.no-mq') {
+          padding: 0.4em .5em .7em .5em;
+          // margin: 0 1em 0 0;
+          margin: 0;
+          border-bottom: 1px solid $gray-80;
+        }
+      }
+    }
+  }
+}
+
+
+

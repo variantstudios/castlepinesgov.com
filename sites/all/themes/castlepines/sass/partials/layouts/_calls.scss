@@ -1,0 +1,19 @@
+.call-1 {
+  @include breakpoint($tablet, $no-query: '.no-mq')  {
+    width: 67%;
+    float: left;
+  }
+}
+.call-2 {
+  @include breakpoint($tablet, $no-query: '.no-mq')  {
+    width: 30%;
+    float: right;
+  }
+}
+
+.call {
+  @include breakpoint($tablet, $no-query: '.no-mq')  {
+    width: 30%;
+    float: left;
+  }
+}

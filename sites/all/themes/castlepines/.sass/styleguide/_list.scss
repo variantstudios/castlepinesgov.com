@@ -1,0 +1,61 @@
+/**
+ * Unordered List
+ */
+ul{
+  li{
+		font-family: $p-font;
+  }
+  /**
+   * Unordered inline list with links
+   */
+  &.inline{
+    li{
+      a{
+
+      }
+    }
+  }
+}
+/**
+ * Ordered List
+ */
+ol{
+  li{
+		font-family: $p-font;
+  }
+}
+/**
+ * Both
+ */
+ul, ol{
+  margin: 0;
+  padding: 0 0 0 2em;
+}
+/**
+ * List Item
+ */
+li {
+  margin-bottom: 1em;
+}
+/**
+ * Nested Items
+ */
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+
+}
+
+ul.unstyled,
+ol.unstyled {
+
+}
+
+ul.pager {
+  padding: 0;
+  li {
+    display: inline-block;
+    padding: 0 .2em;
+  }
+}

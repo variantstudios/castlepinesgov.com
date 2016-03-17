@@ -1,0 +1,25 @@
+
+
+input[type="submit"] {
+  background: $orange;
+  border: 0;
+  padding: 0.65em 1.25em;
+  font-weight: 700;
+  font-size: 100%;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 1em;
+  border-radius: 6px;
+  -webkit-appearance: none;
+  &:hover {
+    background: darken($orange, 5%);
+  }
+}
+
+/* File Upload Submit Button */
+.form-managed-file .form-submit {
+  margin: 0 1em;
+}  
+

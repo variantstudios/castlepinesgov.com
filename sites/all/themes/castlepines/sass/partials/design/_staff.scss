@@ -1,0 +1,41 @@
+.node-staff.view-mode-full {
+  .ds-one {
+	  width: 75px;
+	  @include breakpoint($tablet, $no-query: '.no-mq') {
+	    width: 150px;
+    }
+    float: left;
+    margin: 1rem 2rem 0rem 0;
+    border-radius: 0;
+  }
+  .ds-two {
+	  @include breakpoint($tablet, $no-query: '.no-mq') {
+	    overflow: hidden;
+    }
+    h2, .staff-email {
+	    @include breakpoint($tablet, $no-query: '.no-mq') {
+	      display: inline-block;
+	      vertical-align: middle;
+      }
+    }
+    .staff-email {
+      padding-left: 3em;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+  .bio {
+    clear: both;
+  }
+}
+
+.staff-detail {
+  padding-right: 1em;
+  //float: left;
+  label {
+    display: inline-block;
+    padding-right: .25em;
+
+  }
+} 

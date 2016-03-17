@@ -1,0 +1,26 @@
+.attachments {
+  margin: 2rem 0 0;
+	label {
+		display: block;
+		margin-bottom: .5rem
+	}
+	.file-icon {
+		display: none;
+	}
+	.file {
+	margin-right: .5em;
+		a {
+			text-decoration: none;
+			font-weight: 700;
+			background: $green;
+			color: #FFF;
+			padding: .25rem .5rem;
+			border-radius: 4px;
+			&:before {
+				content: "\f0ed";
+				font-family: 'FontAwesome';
+				padding-right: .5rem;
+			}
+		}
+	}
+}

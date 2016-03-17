@@ -1,0 +1,72 @@
+.col-1 {
+  @include clearfix;
+  .col {
+    @include breakpoint($tablet, $no-query: '.no-mq') {
+      width: 100%;
+    }
+  }
+}
+.col-2 {
+  @include clearfix;
+  padding: 0em 0 1em;
+  margin: 3em 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+	.col {
+		@include breakpoint($tablet, $no-query: '.no-mq') {
+      width: 49%;
+      padding: 1em;
+    }
+	}
+}
+.col-3 {
+  @include clearfix;
+  padding: 1em 0 1em;
+  margin: 3em 0 1rem;
+  border-top: 1px solid #ddd;
+  .col {
+    @include breakpoint($tablet, $no-query: '.no-mq') {
+      width: 32%;
+      padding: 1em;
+    }
+  }
+}
+.col-4 {
+  @include clearfix;
+  .col {
+    @include breakpoint($tablet, $no-query: '.no-mq') {
+      width: 24%;
+      padding: 1em;
+    }
+  }
+}
+
+  .col {
+    @include breakpoint($tablet, $no-query: '.no-mq') {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+
+  .col-1 {
+   .thumb {
+      padding: 1em;
+      @include breakpoint($tablet, $no-query: '.no-mq') {
+        width: 50%;
+        float: left;
+      }
+    }
+    .detail {
+      overflow: hidden;
+      @include breakpoint($tablet, $no-query: '.no-mq') {
+        padding: 0 1em;
+      }
+    }
+  }
+
+  .front-news {
+    .col-3 {
+       @include mp-reset;
+       border: 0;
+    }
+  }

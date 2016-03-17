@@ -1,0 +1,21 @@
+.node-gallery  {
+	h1 {
+		margin-bottom: 1rem;
+	}
+	a.colorbox {
+		line-height: 0;
+		display: inline-block;
+		vertical-align: top;
+		width: 50%;
+		padding: .5rem;
+		@include breakpoint($tablet) {
+			width: 33%;
+		}
+		@include breakpoint($desktop, $no-query: '.no-mq') {
+			width: 25%;
+		}
+		img {
+			width: 100%;
+		}
+	}
+}

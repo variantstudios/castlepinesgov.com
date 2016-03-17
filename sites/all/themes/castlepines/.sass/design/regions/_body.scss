@@ -1,0 +1,36 @@
+body.html {
+  background: $site-bg;
+}
+.wrapper--content  {
+  background: #FFFBF0;
+  background: url('../images/theme/bg.jpg') repeat;
+  @include clearfix;
+  padding: 1em 0 0;
+
+}
+
+.bg-header {
+	background: url('../images/theme/landscape.png') no-repeat;
+	height: 65px;
+	margin-top: -135px;
+	@include breakpoint($tablet, $no-query: '.no-mq') {
+		margin-top: -35px;
+	}
+}
+
+.front {
+	.bg-header {
+		margin-top: -20px;
+		@include breakpoint($tablet, $no-query: '.no-mq') {
+			margin-top: -60px;
+		}
+	}
+}
+ .container-main {
+	@include breakpoint($tablet, $no-query: '.no-mq') {
+		border-right: 2px solid rgba(251, 153, 196, 0.3);
+	}
+}
+.no-sidebar .container-main {
+	border-right: 0;
+}

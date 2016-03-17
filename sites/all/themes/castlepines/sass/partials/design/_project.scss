@@ -1,0 +1,24 @@
+.latest-projects {
+  .project-item {
+    @include breakpoint($tablet, $no-query: '.no-mq') {
+      display: inline-block;
+      width: 33%;
+      padding: 1em;
+      vertical-align: top;
+    }
+    h3 {
+      margin: .5em 0;
+      line-height: 1.3;
+      a {
+        color: inherit;
+      }
+    }
+    img {
+      width: 100%;
+    }
+    .project-date {
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+}

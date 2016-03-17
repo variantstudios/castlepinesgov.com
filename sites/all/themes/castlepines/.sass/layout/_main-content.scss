@@ -1,0 +1,36 @@
+.container-main {
+  padding: 0 1em 1em;
+   @include breakpoint($tablet, $no-query: '.no-mq') {
+	   padding: 0 3em 2em 2em;
+   }
+}
+
+.front {
+	.container-main {
+	   @include breakpoint($tablet, $no-query: '.no-mq') {
+		   padding: 0 1.5em 2em 1.5em;
+	   }
+	}
+
+}
+
+
+.container-main {
+  @include breakpoint($tablet, $no-query: '.no-mq') {
+    @include grid-span(8.5, 1);
+  }
+}
+  
+.no-sidebar {
+  .container-main {
+    @include breakpoint($tablet, $no-query: '.no-mq') {
+      @include grid-span(12, 1);
+    }
+  }
+}
+
+aside.container-sidebar {
+  @include breakpoint($tablet, $no-query: '.no-mq') {
+    @include grid-span(3.5, 9.5);
+  }
+}

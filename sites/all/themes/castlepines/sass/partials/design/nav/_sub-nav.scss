@@ -1,0 +1,103 @@
+.sub-nav {
+  h2 {
+    @include mp-reset;
+  }
+  ul {
+    @include mp-reset;
+    li {
+      display: block;
+      float: none;
+      &.active {
+        a {
+          font-weight: 700;
+        }
+      }
+      a {
+        padding: .25em 0;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+.sidebar {
+  &.section-1 {
+    .sub-nav {
+      ul {
+        li {
+          &.active {
+            a {
+              color: $section-1;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.section-2 {
+    .sub-nav {
+      ul {
+        li {
+          &.active {
+            a {
+              color: $section-2;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.section-3 {
+    .sub-nav {
+      ul {
+        li {
+          &.active {
+            a {
+              color: $section-3;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.section-4 {
+    .sub-nav {
+      ul {
+        li {
+          &.active {
+            a {
+              color: $section-4;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.section-5 {
+    .sub-nav {
+      ul {
+        li {
+          &.active {
+            a {
+              color: $section-5;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.section-6 {
+    .sub-nav {
+      ul {
+        li {
+          &.active {
+            a {
+              color: $section-6;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

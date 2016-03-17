@@ -1,0 +1,74 @@
+/* Messages */
+div.messages {
+  font-weight: 700;
+  padding: 1em 4em;
+  border-left: 10px solid;
+  font-size: 92%;
+  background-position: 16px 16px;
+  &.status {
+    background-color: $valid;
+    border-color: darken($valid, 20%);
+    background-image: url('../images/system/valid.png');
+  }
+  &.warning {
+    background-color: $warning;
+    border-color: darken($warning, 30%);
+    background-image: url('../images/system/warning.png');
+  }
+  &.error {
+    background-color: $error;
+    border-color: darken($error, 30%);
+    background-image: url('../images/system/error.png');
+  }
+}
+
+html.js input.form-autocomplete {
+  background-image: url('../images/system/throbber-still.gif');
+  background-position: 98% center;
+}
+
+html.js input.throbbing {
+  background-image: url('../images/system/throbber-load.gif');
+  background-position: 98% center;
+}
+
+/* Token Tree */
+.token-tree {
+  margin: 0;
+  font-size: 100%;
+  td {
+    padding: 0.3em 1em;
+    span {
+      margin-left: -9px !important;
+      padding-left: 20px !important;
+    }
+  }
+}
+
+/* Progress Bar */
+#progress {
+  border: 0;
+  .bar {
+    border-radius: 0;
+    background: $gray_90;
+    border: 0;
+    .filled {
+      background: $gray_70; /* this will be replaced with site specific color */
+    }
+  }
+}
+
+
+
+/**
+ * Confirm Form
+ */
+#styleguide-header {
+  ul {
+        -moz-column-count: 3;
+       -moz-column-gap: 20px;
+       -webkit-column-count: 3;
+       -webkit-column-gap: 20px;
+       margin-bottom: 2em;
+  }
+}

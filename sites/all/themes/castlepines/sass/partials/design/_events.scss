@@ -1,0 +1,109 @@
+.upcoming-events {
+  margin-bottom: 1rem;
+  h6, p {
+    margin: 0;
+  }
+  .event-item {
+    margin:1em 0 1em;
+  }
+}
+
+// Full Node
+.node-events.view-mode-full {
+	iframe {
+		width: 100%;
+	}	
+}
+
+.next-event {
+  .label-above {
+    display: inline-block;
+  }
+  .date-display-single {
+    font-weight: 700;
+    padding-left: .5em;
+  }
+}
+
+.future-events {
+  margin: 1em 0;
+  .views-exposed-form {
+    margin: 0;
+    .views-exposed-widget {
+      margin: 0;
+    }
+    label {
+      vertical-align: top;
+      margin: 0;
+      font-weight: normal;
+    }
+    .views-widget {
+      vertical-align: top;
+    }
+  }
+}
+
+
+// Calendar
+.container-main {
+	.view-city-calendar .date-nav-wrapper {
+		ul.pager {
+			margin: 2em 0 0;
+			padding: 0;
+		}
+	  .date-heading {
+	    text-align: left;
+			h3 {
+				font-size: 130%;
+			}
+	  }
+	  .date-prev {
+		  right: 60px;
+		  left: auto;
+
+	  }
+	  .date-prev, .date-next {
+	    padding: 6px 10px;
+	    margin: 0;
+	    a {
+	      background: none;
+	      display: inline;
+	      margin: 0;
+	      width: auto;
+	    }
+	  }
+	}
+}
+
+.next-event {
+	margin: 0 0 2em;
+}
+
+.event-desc {
+	margin: 2em 0;
+}
+.next-event.past {
+color: #DA1B1B;
+font-size: 115%;
+}
+
+.ui-accordion .ui-accordion-header {
+	background: #fff;
+	border-radius: 3px;
+	font-size: 90%;
+	font-weight: 700;
+	padding: .75em .5em .75em 2.3em;
+}
+.ui-widget {
+	font-family: $base-font-family;
+	font-size: 100%;
+	.next-event {
+		padding-bottom: .5em;
+		margin: 0;
+	}
+	.next-event span.date-display-single {
+		padding: 0;
+		font-weight: normal;
+		font-size: 90%;
+	}
+}

@@ -1,0 +1,49 @@
+.node-events {
+	#signup-form {
+		 fieldset {
+			 height: auto;
+			 background: none;
+			 border: 0;
+			 @include mp-reset;
+			 margin: 2rem 0 0;
+			 .fieldset-legend {
+				 background: none;
+				 padding: 0;
+			 }
+			 .fieldset-wrapper {
+				 display: block;
+			 }
+			 legend {
+				 a {
+					 text-decoration: none;
+					 font-size: 150%;
+					 font-weight: 700;
+					 cursor: default;
+					 
+				 }
+			 }
+		 }	
+	}
+	
+	.colorbox {
+		@include breakpoint($tablet, $no-query: '.no-mq') {
+			float: right;
+			padding-left: 1rem;
+		}
+	}
+}
+
+.view-events {
+	.more-link {
+		margin: .5rem 0 0;
+		font-weight: 700;
+		text-align: left;
+		a {
+		color: $orange;
+			&:before {
+				content: '\f073';
+				font-family: 'FontAwesome';
+			}
+		}
+	}
+}

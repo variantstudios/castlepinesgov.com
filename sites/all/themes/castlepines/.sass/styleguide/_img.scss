@@ -1,0 +1,18 @@
+/**
+ * There isn't much to place in here, but if there is
+ * special media treatment on the site place it here
+ */
+img.image-full_width_image.insert-image {
+	width: 100% !important;
+	height: auto !important;
+	padding: 1rem 0 2rem;
+}
+
+img.image-half_width_image.insert-image {
+	width: 100% !important;
+	height: auto !important;
+	padding: 1rem;
+	@include breakpoint($tablet, $no-query: '.no-mq') {
+		width: 50% !important;
+	}
+}

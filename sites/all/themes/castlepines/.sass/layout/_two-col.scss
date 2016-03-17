@@ -1,0 +1,13 @@
+.node-programs.node-teaser, .node-people.node-teaser, .node-partners.node-teaser {
+	@include clearfix;
+	.ds-one {
+		@include breakpoint($tablet, $no-query: '.no-mq') {
+			float: left;
+			width: 25%;
+			margin-right: 2rem;
+		}	
+	}
+	.ds-two {
+		overflow: hidden;
+	}
+}

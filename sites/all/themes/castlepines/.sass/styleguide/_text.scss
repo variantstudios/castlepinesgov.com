@@ -1,0 +1,82 @@
+/**
+ * General Text Formatting
+ */
+html{
+
+}
+
+body {
+  font-size: $base-font-size-small;
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  line-height: $base-font-line-height;
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: #515351;
+  @include breakpoint($tablet) {
+    font-size: $base-font-size; /* increases fon-size on larger displays */
+  }
+}
+
+/**
+ * Blockquote
+ */
+blockquote{
+  margin: 0em 1em;
+  padding: .5em 0em;
+  font-style: italic;
+  font-weight: 700;
+  @include breakpoint($tablet, $no-query: '.no-mq') {
+  padding: .5em 2em;
+  }
+}
+
+p {
+	font-family: $p-font;
+	line-height: 1.95;
+}
+/**
+ * Headings
+ */
+
+#{headings()} {
+
+}
+
+h1, h2, h3, h4 , h5, h6 { margin: 1rem 0; line-height: 1.3;}
+h1 {
+  font-size: $h1-size;
+  font-family: $alt-font-family;
+  font-weight: $alt-font-weight;
+  color: $green;
+  margin:0 0;
+}
+
+h2 {
+  font-size: $h2-size;
+}
+
+h3 {
+  font-size: $h3-size;
+}
+
+h4 {
+  font-size: $h4-size;
+}
+
+h5 {
+  font-size: $h5-size;
+}
+
+h6 {
+  font-size: $h6-size;
+}
+
+.sub-title {
+	font-family: $alt-font-family;
+  font-weight: $alt-font-weight;
+  color: $orange;
+  font-size: 150%;
+  margin-top: 0;
+}

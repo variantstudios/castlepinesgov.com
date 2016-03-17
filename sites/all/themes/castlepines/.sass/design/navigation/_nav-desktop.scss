@@ -1,0 +1,69 @@
+.nav-toggle {
+  @include breakpoint($desktop, $no-query: '.no-mq') {
+    display:none;
+  }
+}
+
+.main-navigation {
+  @include breakpoint($desktop, $no-query: '.no-mq') {
+    margin:  1em 0 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,.2);
+    background: $green;
+  }
+  ul {
+  float: right;
+  /*& > li.active-trail {
+	  border-bottom: 3px solid #fff;
+  }*/
+  .sub-menu {
+	  @include breakpoint($desktop, $no-query: '.no-mq') {
+		  opacity: 0;
+		  @include transition(all, .35s, ease-out);
+	  }
+	  
+	  &.active {
+	  @include breakpoint($desktop, $no-query: '.no-mq') {
+		  opacity: 1;
+			  max-height: 1000px !important;
+			  @include transition(all, .5s, ease-in);
+		  }
+	  }
+  }
+    li {
+      a {
+        @include breakpoint($desktop, $no-query: '.no-mq') {
+          padding: .75em;
+        }
+        @include breakpoint($lg-desktop) {
+          padding: .65em 1em;
+          font-size: 120%;
+        }
+      }
+      &.last {
+        ul {
+	        right: 0;
+        }
+      }
+      ul {
+	      width: 250px;
+				background: $green;
+				font-size: 90%;
+				li {
+					position: relative;
+					ul.tier-three {
+						display: none;
+					}
+					&:hover {
+						ul.tier-three {
+							display: block;
+							right: 0;
+					    left: 250px;
+					    background: lighten($green, 5%);
+					    top: 0;
+						}
+					}
+				}
+      }
+    }
+  }
+}

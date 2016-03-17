@@ -1,0 +1,35 @@
+#block-menu-menu-footer-first {
+	@include breakpoint($tablet) {
+		@include grid-span(4, 1);
+	}
+	@include breakpoint($desktop, $no-query: '.no-mq') {
+		@include grid-span(3, 1);
+	}
+}
+
+#block-menu-menu-footer-second {
+	@include breakpoint($tablet) {
+		@include grid-span(4, 5);
+	}
+	@include breakpoint($desktop, $no-query: '.no-mq') {
+		@include grid-span(3, 4);
+	}
+}
+
+#block-menu-menu-footer-third {
+	@include breakpoint($tablet) {
+		@include grid-span(4, 9);
+	}
+	@include breakpoint($desktop, $no-query: '.no-mq') {
+		@include grid-span(3, 7);
+	}
+}
+
+.footer-second {
+	clear: both;
+	padding-top: 3em;
+	@include breakpoint($desktop, $no-query: '.no-mq') {
+		@include grid-span(3, 10);
+		padding-top: 1em;
+	}
+}

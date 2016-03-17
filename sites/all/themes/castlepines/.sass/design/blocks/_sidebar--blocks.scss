@@ -1,0 +1,38 @@
+.sidebar--block {
+	margin-bottom: 2em;
+	h2 {
+		font-size: 160%;
+		color: $green;
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+	}
+	ul, ul li {
+		list-style: none;
+		@include mp-reset;
+		font-family: $base-font-family;
+		li {
+			padding-bottom: .25em;
+		}
+
+	}
+	a {
+		text-decoration: none;
+	}
+	
+	ul.menu {
+		a {
+			font-size: 120%;
+		}
+	}
+	
+	.upcoming-date {
+    color: #562F24;
+		.date-display-single {
+			padding-right: .5rem;
+		}
+	}
+	h4 {margin-bottom: .5rem; font-weight: normal; font-size: 120%;}
+}
+

@@ -1,0 +1,6 @@
+.container-sidebar {
+   padding: 0 1em 1em;
+   @include breakpoint($tablet, $no-query: '.no-mq') {
+	   padding: 0;
+   }
+}

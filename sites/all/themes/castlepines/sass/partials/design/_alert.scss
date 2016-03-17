@@ -1,0 +1,16 @@
+.alert-bar {
+  background: linear-gradient(to bottom, #EDEDED 0%, #FCFCFC 100%);
+  padding: 1em;
+  margin: 3em 0 0;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  p {
+    display: inline-block;
+    margin: 0;
+  }
+  a {
+    display: inline-block;
+    padding: 0 2em;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,17 @@
+.views-exposed-form {
+  margin-bottom: 2em;
+  label, .views-widget, .views-exposed-widget {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 1em 0em 0;
+    padding: 0;
+    float: none;
+    .form-submit {
+      margin: 0;
+    }
+  }
+
+}
+.views-exposed-widgets {
+  margin-bottom: 0;
+}

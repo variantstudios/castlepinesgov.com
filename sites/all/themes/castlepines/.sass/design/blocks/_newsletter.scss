@@ -1,0 +1,25 @@
+#mc_embed_signup  {
+	form {
+		padding: 0;
+		label {
+			@include breakpoint($desktop, $no-query: '.no-mq') {
+				width: 25%;
+			}
+			vertical-align: middle;
+		}
+		.mc-field-group {
+			margin-bottom: .5em;
+		}
+		.mc-field-group input {
+		width: 100%;
+			@include breakpoint($desktop, $no-query: '.no-mq') {
+				width: 74%;
+			}
+			vertical-align: middle;
+		}
+	}
+	
+	.indicates-required {
+		text-align: right;
+	}
+}

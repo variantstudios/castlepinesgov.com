@@ -1,0 +1,86 @@
+.calendar-calendar div.calendar {
+  font-size: 90%;
+}
+.calendar-calendar .month-view .full td.single-day div.monthview, .calendar-calendar .week-view .full td.single-day div.weekview, .calendar-calendar .day-view .full td.single-day div.dayview {
+  background: none;
+  padding: .25em;
+
+}
+
+.calendar-calendar .month-view .full td.multi-day div.monthview, .calendar-calendar .week-view .full td.multi-day div.weekview, .calendar-calendar .day-view .full td.multi-day div.dayview {
+  background: rgba(99, 168, 105, 0.35);
+  border-radius: 0;
+}
+
+.calendar-calendar .month-view .full tr td.multi-day.starts-today {
+  border: 0;
+  padding: 0;
+}
+
+.calendar-calendar .month-view .full td.multi-day .inner .monthview .cutoff, .calendar-calendar .week-view .full td.multi-day .inner .weekview .cutoff {
+  background: none;
+}
+.calendar-calendar .month-view .full td.date-box.today, .calendar-calendar .month-view .full tr td.single-day.today {
+  border-color: $green;
+  border: 0;
+  background: rgba(99, 168, 105, 0.14);
+}
+.calendar-calendar .month-view .full tr td.single-day.today {
+  border-bottom: 1px solid #ccc;
+}
+
+.calendar-calendar td .inner div.day a {
+  color: inherit;
+}
+
+.calendar-calendar {
+  .views-field-title {
+    line-height: 1;
+  }
+
+}
+
+@include breakpoint($phone) {
+	.calendar-calendar .month-view .full tr.date-box, .calendar-calendar .month-view .full tr.date-box td, .calendar-calendar .month-view .full tr.multi-day, .calendar-calendar .month-view .full tr.multi-day td {
+		height: auto;
+		max-height: none;
+	}
+  .view .date-nav-wrapper .date-heading {
+    text-align: left;
+  }
+  .calendar-calendar .month-view table.full {
+    position: relative;
+  }
+  .calendar-calendar {
+	  border: 0;
+  }
+  .calendar-calendar .month-view .full tr.single-day {
+	  border-top: 0;
+  }
+  .calendar-calendar .month-view .full tr td {
+    width: 100%;
+    float: left;
+    text-align: left;
+    padding: .5em 1em;
+    border: 0;
+    border-top: 1px solid #ccc;
+
+  }
+  .calendar-calendar tbody tr:hover td {
+    background: none;
+  }
+  .calendar-calendar .month-view .full tr.single-day {
+    border-top: 1px solid #ccc;
+  }
+  .calendar-calendar .month-view .full tr td.single-day:before {
+    //content: attr(data-day-of-month) ",\0000a0" attr(headers);
+    //font-weight: bold;
+  }
+  .calendar-calendar .month-view .full thead tr,
+  .calendar-calendar .month-view .full tr th.days,
+  .calendar-calendar .month-view .full tr td.date-box,
+  .calendar-calendar .month-view .full tr td.no-entry,
+  .calendar-calendar .month-view .full tr td.empty {
+    display: none;
+  }
+}
